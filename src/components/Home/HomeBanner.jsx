@@ -1,0 +1,111 @@
+'use client';
+
+import React, { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper/modules';
+import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+const bannerImages = [
+  { src: '/images/banner-slider-img-1.webp', alt: 'Banner 1' },
+  { src: '/images/banner-slider-img-2.webp', alt: 'Banner 2' },
+  { src: '/images/banner-slider-img-3.webp', alt: 'Banner 3' },
+  { src: '/images/banner-slider-img-4.webp', alt: 'Banner 4' },
+  { src: '/images/banner-slider-img-5.webp', alt: 'Banner 5' },
+  { src: '/images/banner-slider-img-6.webp', alt: 'Banner 6' },
+  { src: '/images/banner-slider-img-7.webp', alt: 'Banner 7' },
+  { src: '/images/banner-slider-img-8.webp', alt: 'Banner 8' },
+  { src: '/images/banner-slider-img-9.webp', alt: 'Banner 9' },
+  { src: '/images/banner-slider-img-10.webp', alt: 'Banner 10' },
+  { src: '/images/banner-slider-img-11.webp', alt: 'Banner 11' },
+  { src: '/images/banner-slider-img-12.webp', alt: 'Banner 12' },
+  { src: '/images/banner-slider-img-13.webp', alt: 'Banner 13' },
+];
+
+export default function HomeBanner() {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  return (
+    <section className="dgu-banner relative w-full overflow-hidden">
+      {/* Prev Arrow — sits outside the swiper, vertically centred */}
+      <button
+        ref={prevRef}
+        aria-label="Previous slide"
+        className="
+          dgu-banner-arrow dgu-banner-arrow--prev
+          absolute left-0 top-1/2 -translate-y-1/2 z-20
+          flex items-center justify-center
+          w-9 h-12
+          sm:w-10 sm:h-14
+          md:w-11 md:h-16
+          bg-[#68176b] text-white
+          cursor-pointer select-none
+          transition-opacity duration-200
+          hover:opacity-90
+          focus-visible:outline-2 focus-visible:outline-white
+        "
+      >
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+      </button>
+
+      {/* Next Arrow */}
+      <button
+        ref={nextRef}
+        aria-label="Next slide"
+        className="
+          dgu-banner-arrow dgu-banner-arrow--next
+          absolute right-0 top-1/2 -translate-y-1/2 z-20
+          flex items-center justify-center
+          w-9 h-12
+          sm:w-10 sm:h-14
+          md:w-11 md:h-16
+          bg-[#68176b] text-white
+          cursor-pointer select-none
+          transition-opacity duration-200
+          hover:opacity-90
+          focus-visible:outline-2 focus-visible:outline-white
+        "
+      >
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+      </button>
+
+      <Swiper
+        modules={[Navigation, Autoplay]}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={(swiper) => {
+          // Assign refs before Swiper initialises so it picks up the elements
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+        }}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        loop
+        speed={600}
+        slidesPerView={1}
+        className="w-full"
+      >
+        {bannerImages.map((img, index) => (
+          <SwiperSlide key={index}>
+            <div className="relative w-full aspect-[1366/450] sm:aspect-[1366/420] md:aspect-[1366/400] lg:aspect-[1366/480]">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                className="object-cover object-center"
+                draggable={false}
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
+  );
+}
