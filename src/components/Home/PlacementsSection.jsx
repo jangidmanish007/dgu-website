@@ -80,15 +80,15 @@ function PlacementCard({ item }) {
 
       {/* Gradient overlay + detail box */}
       <div
-        className="absolute bottom-0 left-0 right-0 px-5 py-6 transition-all duration-[400ms] ease-out min-h-[110px]"
+        className="absolute bottom-0 left-0 right-0 px-5 py-6 transition-all duration-[400ms] ease-out lg:min-h-[123px] min-h-[110px]"
         style={{
           background: 'linear-gradient(to top, rgb(0 0 0) 80%, rgb(0 0 0 / 2%) 100%)',
           opacity: hovered ? 1 : 0.92,
           transform: hovered ? 'translateY(0)' : 'translateY(6px)',
         }}
       >
-        <p className="text-white font-bold text-[15px] leading-snug mb-0.5">{item.company}</p>
-        <p className="text-gray-300 text-[13px] leading-snug">{item.name}</p>
+        <p className="text-white font-bold text-[15px] lg:text-[20px] leading-snug mb-0.5">{item.company}</p>
+        <p className="text-gray-300 text-[13px] lg:text-[15px] leading-snug">{item.name}</p>
       </div>
     </div>
   );

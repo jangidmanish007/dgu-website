@@ -54,7 +54,7 @@ const genesisgalleryImages = [
 export default function LifeatDGU() {
   return (
     <section className="pb-10 pt-6 sm:pb-14 md:pb-16 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Section heading ─────────────────────────────────────────── */}
         <motion.div
           className="text-center mb-6 sm:mb-8"

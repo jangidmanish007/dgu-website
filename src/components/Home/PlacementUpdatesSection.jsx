@@ -267,18 +267,18 @@ function PlacementUpdateCard({ item }) {
         />
 
         {/* Date bar — sits at bottom of the image */}
-        <div className="absolute bottom-0 left-0 right-0 bg-[#2d1250] text-white text-[13px] font-semibold text-center py-[7px] tracking-wide z-10">
-          {item.date}
-        </div>
+      </div>
+      <div className="shadow-[0_4px_10px_rgba(0,0,0,.2)] bg-[#2d1250] text-white text-[13px] font-semibold text-center py-[7px] tracking-wide z-10">
+        {item.date}
       </div>
 
       {/* ── Card body ── */}
-      <div className="flex flex-col flex-1 px-4 pt-4 pb-5 gap-2">
-        <h3 className="text-[14.5px] font-bold text-[#131d3b] leading-snug line-clamp-3 group-hover:text-[#68176b] transition-colors duration-200">
+      <div className="flex flex-col flex-1 px-4 pt-4 pb-5 gap-3">
+        <h3 className="text-[14px] lg:text-[16px] font-bold text-[#131d3b] leading-snug line-clamp-3 group-hover:text-[#68176b] transition-colors duration-200">
           {item.title}
         </h3>
 
-        <p className="text-[13px] text-[#555] leading-relaxed line-clamp-3 flex-1">{item.description}</p>
+        <p className="text-[13px] lg:text-[15px] text-[#333] leading-relaxed line-clamp-3 flex-1">{item.description}</p>
 
         <a
           href={item.link}
@@ -302,8 +302,8 @@ export default function PlacementUpdatesSection() {
   const swiperRef = useRef(null);
 
   return (
-    <section className="w-full pt-8 pb-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section className="w-full pt-8 pb-10 overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
         <motion.div
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8"
           variants={fadeUp}
@@ -312,7 +312,7 @@ export default function PlacementUpdatesSection() {
           viewport={{ once: true, amount: 0.4 }}
         >
           <div>
-            <h2 className="text-[22px] sm:text-[25px] font-bold text-[#131d3b] mb-1">Placement Updates</h2>
+            <h2 className="text-[22px] sm:text-[26px] font-bold text-[#131d3b] mb-2">Placement Updates</h2>
             <p className="text-[15px] text-[#333] font-medium">
               Find out what&apos;s going on at University more Updates
             </p>
@@ -323,7 +323,7 @@ export default function PlacementUpdatesSection() {
             <button
               onClick={() => swiperRef.current?.slidePrev()}
               aria-label="Previous placement update"
-              className="w-9 h-9 rounded-full border cursor-pointer border-[#e0e0e0] flex items-center justify-center shadow-[0_4px_15px_rgba(0,0,0,.05)] text-[#68176b] transition-all duration-200 hover:bg-[#68176b] hover:text-white"
+              className="lg:w-12 lg:h-12 w-9 h-9 rounded-full border cursor-pointer border-[#e0e0e0] flex items-center justify-center shadow-[0_4px_15px_rgba(0,0,0,.05)] text-[#68176b] transition-all duration-200 hover:bg-[#68176b] hover:text-white"
             >
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path
@@ -338,7 +338,7 @@ export default function PlacementUpdatesSection() {
             <button
               onClick={() => swiperRef.current?.slideNext()}
               aria-label="Next placement update"
-              className="w-9 h-9 rounded-full border cursor-pointer border-[#e0e0e0] flex items-center shadow-[0_4px_15px_rgba(0,0,0,.05)] justify-center text-[#68176b] transition-all duration-200 hover:bg-[#68176b] hover:text-white"
+              className="lg:w-12 lg:h-12 w-9 h-9 rounded-full border cursor-pointer border-[#e0e0e0] flex items-center shadow-[0_4px_15px_rgba(0,0,0,.05)] justify-center text-[#68176b] transition-all duration-200 hover:bg-[#68176b] hover:text-white"
             >
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path

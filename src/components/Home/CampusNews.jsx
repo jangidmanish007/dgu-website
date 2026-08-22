@@ -288,7 +288,7 @@ function CampusCard({ item }) {
       className="group flex min-h-[480px] w-full flex-col rounded-xl shadow-[0_8px_25px_rgba(0,0,0,.05)] border border-[#b4aeae] overflow-hidden bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
     >
       {/* image wrapper — clips the scale overflow */}
-      <div className="relative w-full aspect-[4/4] max-h-[270px] min-h-[270px] overflow-hidden">
+      <div className="relative w-full aspect-[4/4] max-h-[250px] min-h-[250px] overflow-hidden">
         <Image
           src={item.image}
           alt={item.title}
@@ -296,12 +296,10 @@ function CampusCard({ item }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-110"
         />
-        {/* date badge */}
-        <div className="absolute bottom-0 left-0 right-0 bg-[#68176b] text-white text-sm font-semibold text-center py-2 tracking-wide">
-          {item.date}
-        </div>
       </div>
-
+      <div className="shadow-[0_4px_10px_rgba(0,0,0,.2)] bg-[#2d1250] text-white text-[13px] font-semibold text-center py-[7px] tracking-wide z-10">
+        {item.date}
+      </div>
       {/* text content */}
       <div className="flex flex-col gap-2 p-4 flex-1">
         <h3 className="text-sm sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-3">{item.title}</h3>
@@ -354,7 +352,7 @@ export default function CampusNews() {
 
   return (
     <section className="pb-10 sm:pb-14 pt-4 md:pb-16 bg-white border-t border-gray-100 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px] gap-8 lg:gap-10">
           {/* ── LEFT: Campus News carousel ─────────────────────────────── */}
           <motion.div
