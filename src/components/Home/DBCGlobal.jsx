@@ -109,7 +109,7 @@ export default function PlacementCardsSection() {
 
               {/* Main Heading */}
 
-              <h3 className="mb-6 text-center text-[26px] font-[700] text-[#131d3b]">
+              <h3 className="mb-6 text-center text-[20px] lg:text-[26px] font-[700] text-[#131d3b]">
                 Career Success in Higher Education
               </h3>
 
@@ -156,7 +156,7 @@ export default function PlacementCardsSection() {
 
               {/* Main Heading */}
 
-              <h3 className="mb-6 text-center text-[26px] font-[700] text-[#131d3b]">
+              <h3 className="mb-6 text-center text-[20px] lg:text-[26px] font-[700] text-[#131d3b]">
                 Startup & Entrepreneurial Success
               </h3>
 
@@ -200,7 +200,9 @@ export default function PlacementCardsSection() {
 
               {/* Main Heading */}
 
-              <h3 className="mb-10 text-center text-[26px] font-[700] text-[#131d3b]">Placement Success Videos</h3>
+              <h3 className="mb-10 text-center text-[20px] lg:text-[26px] font-[700] text-[#131d3b]">
+                Placement Success Videos
+              </h3>
 
               {/* =================================================
                   YOUTUBE VIDEO

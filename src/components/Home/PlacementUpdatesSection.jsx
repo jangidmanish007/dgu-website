@@ -294,8 +294,6 @@ function PlacementUpdateCard({ item }) {
 /* ─── Main Section ────────────────────────────────────────────────────────── */
 export default function PlacementUpdatesSection() {
   const swiperRef = useRef(null);
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
 
   return (
     <section className="w-full pt-8 pb-8 ">
@@ -312,9 +310,8 @@ export default function PlacementUpdatesSection() {
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => swiperRef.current?.slidePrev()}
-              disabled={isBeginning}
               aria-label="Previous placement update"
-              className="w-9 h-9 rounded-full border cursor-pointer border-[#e0e0e0] flex items-center justify-center shadow-[0_4px_15px_rgba(0,0,0,.05)] text-[#68176b] transition-all duration-200 hover:bg-[#68176b] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-9 h-9 rounded-full border cursor-pointer border-[#e0e0e0] flex items-center justify-center shadow-[0_4px_15px_rgba(0,0,0,.05)] text-[#68176b] transition-all duration-200 hover:bg-[#68176b] hover:text-white"
             >
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path
@@ -328,9 +325,8 @@ export default function PlacementUpdatesSection() {
             </button>
             <button
               onClick={() => swiperRef.current?.slideNext()}
-              disabled={isEnd}
               aria-label="Next placement update"
-              className="w-9 h-9 rounded-full border cursor-pointer border-[#e0e0e0] flex items-center shadow-[0_4px_15px_rgba(0,0,0,.05)] justify-center text-[#68176b] transition-all duration-200 hover:bg-[#68176b] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-9 h-9 rounded-full border cursor-pointer border-[#e0e0e0] flex items-center shadow-[0_4px_15px_rgba(0,0,0,.05)] justify-center text-[#68176b] transition-all duration-200 hover:bg-[#68176b] hover:text-white"
             >
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path
@@ -352,12 +348,6 @@ export default function PlacementUpdatesSection() {
             autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
-              setIsBeginning(swiper.isBeginning);
-              setIsEnd(swiper.isEnd);
-            }}
-            onSlideChange={(swiper) => {
-              setIsBeginning(swiper.isBeginning);
-              setIsEnd(swiper.isEnd);
             }}
             spaceBetween={20}
             breakpoints={{

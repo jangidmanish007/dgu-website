@@ -52,7 +52,7 @@ function PlacementCard({ item }) {
   return (
     <div
       className="relative overflow-hidden rounded-xl w-full cursor-pointer"
-      style={{ aspectRatio: '3 / 5.2' }}
+      style={{ aspectRatio: '3 / 5.4' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
