@@ -297,11 +297,6 @@ export default function DBCGlobal() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
-          {/* =====================================================
-              CARD 1
-              CAREER SUCCESS
-          ====================================================== */}
-
           <motion.div
             variants={fadeUp}
             style={cardGradientStyle}
@@ -314,26 +309,15 @@ export default function DBCGlobal() {
                 DBS Global University
               </p>
 
-              {/* Main Heading */}
-
               <h3 className="mb-6 text-center text-[20px] lg:text-[26px] font-[700] text-[#131d3b]">
                 Career Success in Higher Education
               </h3>
-
-              {/* =================================================
-                  DRAGGABLE MARQUEE
-              ================================================== */}
 
               <div className="pt-4 lg:pt-6">
                 <DraggableMarquee items={careerData} speed={40} />
               </div>
             </div>
           </motion.div>
-
-          {/* =====================================================
-              CARD 2
-              STARTUP & ENTREPRENEURIAL SUCCESS
-          ====================================================== */}
 
           <motion.div
             variants={fadeUp}
@@ -353,20 +337,11 @@ export default function DBCGlobal() {
                 Startup & Entrepreneurial Success
               </h3>
 
-              {/* =================================================
-                  DRAGGABLE MARQUEE
-              ================================================== */}
-
               <div className="pt-4 lg:pt-6">
                 <DraggableMarquee items={startupData} speed={45} />
               </div>
             </div>
           </motion.div>
-
-          {/* =====================================================
-              CARD 3
-              PLACEMENT SUCCESS VIDEOS
-          ====================================================== */}
 
           <motion.div
             variants={fadeUp}
@@ -386,10 +361,6 @@ export default function DBCGlobal() {
                 Placement Success Videos
               </h3>
 
-              {/* =================================================
-                  YOUTUBE VIDEO
-              ================================================== */}
-
               <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-black shadow-lg">
                 <iframe
                   className="h-full w-full"
@@ -400,20 +371,12 @@ export default function DBCGlobal() {
                 />
               </div>
 
-              {/* =================================================
-                  VIDEO TITLE & DESCRIPTION
-              ================================================== */}
-
               <div className="mt-4 text-center">
                 <h4 className="font-bold text-[#131d3b]">{videosData[currentVideoIndex].title}</h4>
 
                 <p className="mt-1 px-2 text-xs text-gray-600">{videosData[currentVideoIndex].desc}</p>
               </div>
             </div>
-
-            {/* =================================================
-                VIDEO NAVIGATION BUTTONS
-            ================================================== */}
 
             <div className="mt-4 flex items-center justify-center gap-3">
               {/* Previous */}
