@@ -307,7 +307,7 @@ export default function PlacementUpdatesSection() {
             <div className="w-10 h-[3px] bg-[#68176b] rounded-full mt-2" />
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 shrink-0 sm:justify-end justify-center">
             <button
               onClick={() => swiperRef.current?.slidePrev()}
               aria-label="Previous placement update"
