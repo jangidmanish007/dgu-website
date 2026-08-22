@@ -1,6 +1,18 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { motion } from 'framer-motion';
+
+/* ─── Animation variants ────────────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 36 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.14 } },
+};
 
 // =========================================================
 // INFINITE DRAG MARQUEE HOOK
@@ -278,13 +290,20 @@ export default function DBCGlobal() {
   return (
     <section className="w-full bg-gray-50 px-2 py-6">
       <div className="w-full">
-        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {/* =====================================================
               CARD 1
               CAREER SUCCESS
           ====================================================== */}
 
-          <div
+          <motion.div
+            variants={fadeUp}
             style={cardGradientStyle}
             className="flex min-h-[520px] flex-col justify-between overflow-hidden rounded-2xl py-[64px] lg:py-[88px]"
           >
@@ -309,14 +328,15 @@ export default function DBCGlobal() {
                 <DraggableMarquee items={careerData} speed={40} />
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* =====================================================
               CARD 2
               STARTUP & ENTREPRENEURIAL SUCCESS
           ====================================================== */}
 
-          <div
+          <motion.div
+            variants={fadeUp}
             style={cardGradientStyle}
             className="flex min-h-[520px] flex-col justify-between overflow-hidden rounded-2xl py-[64px] lg:py-[88px]"
           >
@@ -341,14 +361,15 @@ export default function DBCGlobal() {
                 <DraggableMarquee items={startupData} speed={45} />
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* =====================================================
               CARD 3
               PLACEMENT SUCCESS VIDEOS
           ====================================================== */}
 
-          <div
+          <motion.div
+            variants={fadeUp}
             style={cardGradientStyle}
             className="flex min-h-[520px] flex-col rounded-2xl p-6 pt-[64px] lg:pt-[88px] lg:pb-6 pb-[64px]"
           >
@@ -415,8 +436,8 @@ export default function DBCGlobal() {
                 ›
               </button>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

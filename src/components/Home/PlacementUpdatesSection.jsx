@@ -5,6 +5,12 @@ import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
+import { motion } from 'framer-motion';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
 
 const placements = [
   {
@@ -298,7 +304,13 @@ export default function PlacementUpdatesSection() {
   return (
     <section className="w-full pt-8 pb-8 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+        <motion.div
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+        >
           <div>
             <h2 className="text-[22px] sm:text-[25px] font-bold text-[#131d3b] mb-1">Placement Updates</h2>
             <p className="text-[15px] text-[#333] font-medium">
@@ -339,9 +351,16 @@ export default function PlacementUpdatesSection() {
               </svg>
             </button>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="overflow-hidden" style={{ margin: '-8px' }}>
+        <motion.div
+          className="overflow-hidden"
+          style={{ margin: '-8px' }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           <Swiper
             modules={[Navigation, Autoplay]}
             loop={true}
@@ -366,7 +385,7 @@ export default function PlacementUpdatesSection() {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

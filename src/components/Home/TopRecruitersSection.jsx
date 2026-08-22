@@ -4,6 +4,12 @@ import React from 'react';
 import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { motion } from 'framer-motion';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
 
 /* ─── Recruiter data ─────────────────────────────────────────────────────
    Names mapped to the 22 available recruiter images.
@@ -59,12 +65,18 @@ export default function TopRecruitersSection() {
     <TooltipProvider>
       <section className="w-full pb-10 bg-white">
         {/* Heading */}
-        <div className="text-center mb-6">
+        <motion.div
+          className="text-center mb-6"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
           <h2 className="text-[18px] sm:text-[25px] font-bold text-[#131d3b] tracking-wide">Top Recruiters 2025-26</h2>
           <div className="mt-2 mx-auto w-10 h-[3px] bg-[#68176b] rounded-full" />
-        </div>
+        </motion.div>
 
-        {/* Marquee */}
+        {/* Marquee — no animation, already moves */}
         <Marquee gradient={false} speed={45} pauseOnHover={true} className="overflow-hidden">
           {recruiters.map((recruiter) => (
             <RecruiterLogo key={recruiter.id} recruiter={recruiter} />

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import {
   faBriefcase,
@@ -427,6 +428,22 @@ function QuickContactForm() {
   );
 }
 
+/* ─── Animation variants ────────────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+const staggerChildren = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
 /* ─── Main Section ──────────────────────────────────────────────────────── */
 export default function SchoolsSection() {
   const [openId, setOpenId] = useState(null);
@@ -437,7 +454,6 @@ export default function SchoolsSection() {
     setIsMobile(mq.matches);
     const handler = (e) => {
       setIsMobile(e.matches);
-      // Close any open dropdown when switching breakpoints
       setOpenId(null);
     };
     mq.addEventListener('change', handler);
@@ -452,47 +468,67 @@ export default function SchoolsSection() {
     <section className="w-full lg:pt-10 pt-10 lg:pb-20 pb-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-8">
+        <motion.div
+          className="text-center mb-8"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+        >
           <h2 className="text-xl sm:text-[25px] font-bold text-gray-900 tracking-wide uppercase">
             SCHOOLS @ DBS Global University
           </h2>
           <div className="mt-2 mx-auto w-12 h-[3px] bg-[#68176b]" />
-        </div>
+        </motion.div>
 
         {/* Body: two-column schools list + form */}
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Left + Centre: school columns */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+          <motion.div
+            className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-x-6"
+            variants={staggerChildren}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
             {/* Left column */}
             <div className="flex flex-col gap-y-6 lg:gap-y-12">
               {schools.map((school) => (
-                <SchoolRow
-                  key={school.id}
-                  school={school}
-                  isMobile={isMobile}
-                  isOpen={openId === school.id}
-                  onToggle={() => handleToggle(school.id)}
-                />
+                <motion.div key={school.id} variants={fadeUp}>
+                  <SchoolRow
+                    school={school}
+                    isMobile={isMobile}
+                    isOpen={openId === school.id}
+                    onToggle={() => handleToggle(school.id)}
+                  />
+                </motion.div>
               ))}
             </div>
             {/* Right column */}
-            <div className=" mt-4 sm:mt-0 flex flex-col gap-y-6 lg:gap-y-12">
+            <div className="mt-4 sm:mt-0 flex flex-col gap-y-6 lg:gap-y-12">
               {schoolsRight.map((school) => (
-                <SchoolRow
-                  key={school.id}
-                  school={school}
-                  isMobile={isMobile}
-                  isOpen={openId === school.id}
-                  onToggle={() => handleToggle(school.id)}
-                />
+                <motion.div key={school.id} variants={fadeUp}>
+                  <SchoolRow
+                    school={school}
+                    isMobile={isMobile}
+                    isOpen={openId === school.id}
+                    onToggle={() => handleToggle(school.id)}
+                  />
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Quick Contact form */}
-          <div className="w-full lg:w-[310px] xl:w-[391px] shrink-0">
+          <motion.div
+            className="w-full lg:w-[310px] xl:w-[391px] shrink-0"
+            variants={slideInRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <QuickContactForm />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -6,8 +6,25 @@ import Link from 'next/link';
 import { ArrowRight, CalendarDays, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
+import { motion } from 'framer-motion';
 import 'swiper/css';
 import 'swiper/css/navigation';
+
+/* ─── Animation variants ────────────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
 
 /* ─── Campus News data ───────────────────────────────────────────────────── */
 const campusNews = [
@@ -340,7 +357,13 @@ export default function CampusNews() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px] gap-8 lg:gap-10">
           {/* ── LEFT: Campus News carousel ─────────────────────────────── */}
-          <div className="min-w-0">
+          <motion.div
+            className="min-w-0"
+            variants={slideInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
             {/* heading + arrows row */}
             <div className="flex items-end justify-between mb-5 sm:mb-10">
               <div>
@@ -378,10 +401,15 @@ export default function CampusNews() {
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          </motion.div>
 
           {/* ── RIGHT: Admission News ──────────────────────────────────── */}
-          <div>
+          <motion.div
+            variants={slideInRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
             {/* heading */}
             <div className="mb-5 sm:mb-10">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Admission News</h2>
@@ -395,7 +423,7 @@ export default function CampusNews() {
                 <AdmissionCard key={item.id} item={item} />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -6,8 +6,20 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, BookOpen } from 'lucide-react';
+import { motion } from 'framer-motion';
 import 'swiper/css';
 import 'swiper/css/pagination';
+
+/* ─── Animation variants ────────────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
 
 const galleryImages = [
   { src: '/images/26146_mba-farewell-07.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
@@ -44,17 +56,29 @@ export default function LifeatDGU() {
     <section className="pb-10 pt-6 sm:pb-14 md:pb-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Section heading ─────────────────────────────────────────── */}
-        <div className="text-center mb-6 sm:mb-8">
+        <motion.div
+          className="text-center mb-6 sm:mb-8"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
           <h2 className="text-2xl sm:text-3xl font-bold text-[#2a3e61]">Life @ DGU</h2>
           <p className="mt-2 text-sm sm:text-base text-gray-500">
             A glimpse into our <span className="text-[#68176b]">vibrant campus, hostels, sports, and events.</span>
           </p>
           <div className="mx-auto mt-2 h-[3px] w-10 bg-[#68176b] rounded-full" />
-        </div>
+        </motion.div>
 
         {/* ── CTA buttons ─────────────────────────────────────────────── */}
-        <div className="flex items-center justify-center gap-3 sm:gap-4 mb-7 sm:mb-10">
-          {/* Photo Gallery — skew-fill hover (same animation as diff-btn) */}
+        <motion.div
+          className="flex items-center justify-center gap-3 sm:gap-4 mb-7 sm:mb-10"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
+          {/* Photo Gallery */}
           <Link
             href="/photo-gallery"
             className="diff-btn relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[#000] bg-[#000] px-5 py-2.5 cursor-pointer outline-none"
@@ -72,7 +96,7 @@ export default function LifeatDGU() {
             </span>
           </Link>
 
-          {/* Video Gallery — skew-fill hover (same animation as diff-btn) */}
+          {/* Video Gallery */}
           <Link
             href="/video-gallery"
             className="diff-btn relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[#000] bg-white px-5 py-2.5 cursor-pointer outline-none"
@@ -89,12 +113,18 @@ export default function LifeatDGU() {
               />
             </span>
           </Link>
-        </div>
+        </motion.div>
 
-        {/* ── Main Layout: Single Grid System ─────────────────────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+        {/* ── Main Grid ─────────────────────────────────────────────────── */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-1"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {/* 1. YouTube Video */}
-          <div className="relative w-full aspect-video bg-black overflow-hidden ">
+          <motion.div variants={fadeUp} className="relative w-full aspect-video bg-black overflow-hidden">
             <iframe
               src="https://www.youtube.com/embed/1H80BOqNWsI?si=8WrjmvkKDeSyRVat"
               title="Campus Tour at DBS Global University"
@@ -102,10 +132,10 @@ export default function LifeatDGU() {
               allowFullScreen
               className="absolute inset-0 w-full h-full"
             />
-          </div>
+          </motion.div>
 
           {/* 2. MBA Prelude Swiper */}
-          <div className="relative w-full aspect-video bg-black overflow-hidden ">
+          <motion.div variants={fadeUp} className="relative w-full aspect-video bg-black overflow-hidden">
             <Swiper
               modules={[Autoplay, Pagination]}
               autoplay={{ delay: 3800, disableOnInteraction: false }}
@@ -136,10 +166,10 @@ export default function LifeatDGU() {
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          </motion.div>
 
           {/* 3. 8 Ball Pool Swiper */}
-          <div className="relative w-full aspect-video bg-black overflow-hidden ">
+          <motion.div variants={fadeUp} className="relative w-full aspect-video bg-black overflow-hidden">
             <Swiper
               modules={[Autoplay, Pagination]}
               autoplay={{ delay: 1800, disableOnInteraction: false }}
@@ -169,9 +199,9 @@ export default function LifeatDGU() {
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col md:flex-row gap-1">
+          <motion.div variants={fadeUp} className="flex flex-col md:flex-row gap-1">
             {/* 4. Genesis Swiper */}
             <div className="relative w-full bg-black overflow-hidden aspect-ratio-swiper">
               <Swiper
@@ -239,8 +269,8 @@ export default function LifeatDGU() {
                 ))}
               </Swiper>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

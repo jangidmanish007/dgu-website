@@ -4,6 +4,18 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import { motion } from 'framer-motion';
+
+/* ─── Animation variants ────────────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09 } },
+};
 
 /* ─── Data ──────────────────────────────────────────────────────────────── */
 const placements = [
@@ -93,7 +105,13 @@ export default function PlacementsSection() {
     <section className="w-full pt-16 pb-10 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Top: heading left + description right */}
-        <div className="flex flex-col items-center text-center md:flex-row gap-8 md:gap-16 mb-10 lg:px-20">
+        <motion.div
+          className="flex flex-col items-center text-center md:flex-row gap-8 md:gap-16 mb-10 lg:px-20"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+        >
           {/* Left */}
           <div className="md:w-56 shrink-0">
             <h2 className="text-[26px] font-bold text-[#131d3b] mb-3">Placements</h2>
@@ -116,27 +134,51 @@ export default function PlacementsSection() {
             exchange helps build a trust in DGU capabilities to nurture talent and impart necessary skills in its
             students.
           </p>
-        </div>
+        </motion.div>
 
         {/* Divider accent */}
-        <div className="w-10 h-1 bg-[#68176b] mx-auto mb-8 rounded-full" />
+        <motion.div
+          className="w-10 h-1 bg-[#68176b] mx-auto mb-8 rounded-full"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.8 }}
+        />
 
         {/* Sub-heading */}
-        <p className="text-center text-[20px] font-bold text-[#131d3b] mb-8">
+        <motion.p
+          className="text-center text-[20px] font-bold text-[#131d3b] mb-8"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.8 }}
+        >
           <span className="text-[#6b4d00]">350+ Companies</span> recruit from campus every year
-        </p>
+        </motion.p>
 
         {/* ── Desktop (lg+): static 6-card flex row — unchanged ── */}
-        <div className="hidden lg:flex gap-3">
+        <motion.div
+          className="hidden lg:flex gap-3"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {placements.map((item) => (
-            <div key={item.id} className="flex-1 min-w-0">
+            <motion.div key={item.id} className="flex-1 min-w-0" variants={fadeUp}>
               <PlacementCard item={item} />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* ── Mobile / Tablet (below lg): Swiper ── */}
-        <div className="lg:hidden">
+        <motion.div
+          className="lg:hidden"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           <Swiper
             modules={[Navigation]}
             onSwiper={(swiper) => {
@@ -150,15 +192,10 @@ export default function PlacementsSection() {
             }}
             spaceBetween={12}
             breakpoints={{
-              /* Mobile: show 1 full card + peek of next */
               0: { slidesPerView: 1.15 },
-              /* Larger mobile */
               480: { slidesPerView: 1.5 },
-              /* Small tablet */
               640: { slidesPerView: 2.2 },
-              /* Tablet */
               768: { slidesPerView: 2.5 },
-              /* Large tablet */
               900: { slidesPerView: 3.2 },
             }}
           >
@@ -204,7 +241,7 @@ export default function PlacementsSection() {
               </svg>
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

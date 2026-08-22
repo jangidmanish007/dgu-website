@@ -2,6 +2,18 @@
 
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+/* ─── Animation variants ────────────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
 
 /* ─── Data ──────────────────────────────────────────────────────────────── */
 const row1 = [
@@ -152,25 +164,48 @@ export default function DGUDifferenceSection() {
     >
       <div className="relative max-w-7xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-6 md:mb-8">
+        <motion.div
+          className="text-center mb-6 md:mb-8"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
           <h2 className="text-2xl sm:text-[28px] font-bold text-white">
             What makes <span className="text-[#f5c518] bg-[#000]">DGU Different ? </span>
           </h2>
-        </div>
+        </motion.div>
 
-        {/* ── Mobile: single column (< 640px) ── */}
-        {/* ── Tablet: 2-column grid (640px – 1023px) ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
+        {/* ── Mobile / Tablet grid ── */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {allCards.map((card) => (
-            <GridCard key={card.id} card={card} />
+            <motion.div key={card.id} variants={fadeUp}>
+              <GridCard card={card} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* ── Desktop: two rows of 3 with hover-expand (≥ 1024px) ── */}
-        <div className="hidden lg:flex lg:flex-col gap-4">
-          <CardRow cards={row1} />
-          <CardRow cards={row2} />
-        </div>
+        <motion.div
+          className="hidden lg:flex lg:flex-col gap-4"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <motion.div variants={fadeUp}>
+            <CardRow cards={row1} />
+          </motion.div>
+          <motion.div variants={fadeUp}>
+            <CardRow cards={row2} />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
