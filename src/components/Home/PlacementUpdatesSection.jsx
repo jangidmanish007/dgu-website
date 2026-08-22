@@ -299,7 +299,7 @@ export default function PlacementUpdatesSection() {
 
   return (
     <section className="w-full pt-8 pb-8 ">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
           <div>
             <h2 className="text-[22px] sm:text-[25px] font-bold text-[#131d3b] mb-1">Placement Updates</h2>

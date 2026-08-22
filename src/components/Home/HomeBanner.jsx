@@ -76,8 +76,8 @@ export default function HomeBanner() {
           absolute left-0 top-1/2 -translate-y-1/2 z-20
           flex items-center justify-center
           w-9 h-12
-          sm:w-10 sm:h-14
-          md:w-11 md:h-16
+          sm:w-10 sm:h-10
+          md:w-8 md:h-10
           bg-[#68176b] text-white
           cursor-pointer select-none
           transition-opacity duration-200
@@ -85,7 +85,7 @@ export default function HomeBanner() {
           focus-visible:outline-2 focus-visible:outline-white
         "
       >
-        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+        <ChevronLeft className="w-5 h-5 sm:w-5 sm:h-5" strokeWidth={2.5} />
       </button>
 
       {/* Next Arrow */}
@@ -96,9 +96,9 @@ export default function HomeBanner() {
           dgu-banner-arrow dgu-banner-arrow--next
           absolute right-0 top-1/2 -translate-y-1/2 z-20
           flex items-center justify-center
-          w-9 h-12
-          sm:w-10 sm:h-14
-          md:w-11 md:h-16
+         w-9 h-12
+          sm:w-10 sm:h-10
+          md:w-8 md:h-10
           bg-[#68176b] text-white
           cursor-pointer select-none
           transition-opacity duration-200
@@ -106,7 +106,7 @@ export default function HomeBanner() {
           focus-visible:outline-2 focus-visible:outline-white
         "
       >
-        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+        <ChevronRight className="w-5 h-5 sm:w-5 sm:h-5" strokeWidth={2.5} />
       </button>
 
       <Swiper

@@ -68,7 +68,7 @@ function PlacementCard({ item }) {
 
       {/* Gradient overlay + detail box */}
       <div
-        className="absolute bottom-0 left-0 right-0 px-5 py-6 transition-all duration-[400ms] ease-out"
+        className="absolute bottom-0 left-0 right-0 px-5 py-6 transition-all duration-[400ms] ease-out min-h-[110px]"
         style={{
           background: 'linear-gradient(to top, rgb(0 0 0) 80%, rgb(0 0 0 / 2%) 100%)',
           opacity: hovered ? 1 : 0.92,

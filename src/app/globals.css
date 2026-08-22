@@ -295,8 +295,9 @@
 }
 
 .life-dgu-swiper .swiper-pagination {
-  bottom: 10px;  
-  text-align:end;
+  bottom: 10px;
+  text-align: end;
+  padding-right: 20px;
 }
 
 .life-dgu-swiper .swiper-pagination-bullet {
@@ -304,15 +305,77 @@
   opacity: 1;
   width: 6px;
   height: 6px;
-} 
+}
 
 .life-dgu-swiper .swiper-pagination-bullet-active {
   background: #f5c518; /* yellow active dot matching screenshot */
   width: 14px;
   border-radius: 4px;
 }
-@media (max-width:768px){
-  .aspect-ratio-swiper{
-  aspect-ratio: 16/9;
+@media (max-width: 768px) {
+  .aspect-ratio-swiper {
+    aspect-ratio: 16/9;
+  }
 }
+
+/* ── DBCGlobal slider wrapper — left/right gradient fade overlays ─────────── */
+.dbc-slider-wrapper {
+  position: relative;
+}
+
+.dbc-slider-wrapper::before,
+.dbc-slider-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Left fade */
+.dbc-slider-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(245, 220, 255, 0.92), transparent);
+}
+
+/* Right fade */
+.dbc-slider-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(195, 100, 240, 0.72), transparent);
+}
+
+/* Swiper inside the wrapper should not clip the overlay pseudo-elements */
+.dbc-slider-wrapper .swiper {
+  overflow: visible;
+}
+
+/* But individual slides should clip their own content */
+.dbc-slider-wrapper .swiper-wrapper {
+  overflow: visible;
+}
+
+/* ── DBCGlobal marquee card — hover top gradient bar ─────────────────────── */
+.dbc-marquee-card {
+  position: relative;
+}
+
+.dbc-marquee-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 96%;
+  height: 4px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(90deg, #f6b400, #6a1c6e);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.dbc-marquee-card:hover::before {
+  transform: translateX(-50%) scaleX(1);
 }
