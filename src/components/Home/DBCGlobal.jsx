@@ -348,7 +348,10 @@ export default function DBCGlobal() {
               PLACEMENT SUCCESS VIDEOS
           ====================================================== */}
 
-          <div style={cardGradientStyle} className="flex min-h-[520px] flex-col rounded-2xl p-6 pt-[64px] lg:pt-[88px]">
+          <div
+            style={cardGradientStyle}
+            className="flex min-h-[520px] flex-col rounded-2xl p-6 pt-[64px] lg:pt-[88px] lg:pb-6 pb-[64px]"
+          >
             <div>
               {/* Small Heading */}
 
