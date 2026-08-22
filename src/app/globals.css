@@ -250,3 +250,69 @@
   outline: 2px solid #fff;
   outline-offset: -2px;
 }
+
+/* ── Campus News Swiper — equal-height slides ────────────────────────────── */
+.campus-news-swiper {
+  width: 100%;
+}
+
+.campus-news-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.campus-news-swiper .swiper-slide {
+  height: auto;
+}
+
+/* hide default swiper nav buttons — we use custom refs */
+.campus-news-swiper .swiper-button-prev,
+.campus-news-swiper .swiper-button-next {
+  display: none !important;
+}
+
+/* ── DBC Global auto inner slider ────────────────────────────────────────── */
+.dbc-auto-swiper {
+  width: 100%;
+}
+
+.dbc-auto-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.dbc-auto-swiper .swiper-slide {
+  height: auto;
+}
+
+/* ── Life @ DGU Swiper — fill the container and style pagination dots ─────── */
+.life-dgu-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.life-dgu-swiper .swiper-wrapper,
+.life-dgu-swiper .swiper-slide {
+  height: 100%;
+}
+
+.life-dgu-swiper .swiper-pagination {
+  bottom: 10px;  
+  text-align:end;
+}
+
+.life-dgu-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.6);
+  opacity: 1;
+  width: 6px;
+  height: 6px;
+} 
+
+.life-dgu-swiper .swiper-pagination-bullet-active {
+  background: #f5c518; /* yellow active dot matching screenshot */
+  width: 14px;
+  border-radius: 4px;
+}
+@media (max-width:768px){
+  .aspect-ratio-swiper{
+  aspect-ratio: 16/9;
+}
+}
