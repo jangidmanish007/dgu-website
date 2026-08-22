@@ -153,7 +153,7 @@ export default function HomeBanner() {
       >
         {bannerImages.map((img, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full aspect-[390/570] sm:aspect-[1366/420] md:aspect-[1366/400] lg:aspect-[1366/480]">
+            <div className="relative w-full aspect-[390/570] sm:aspect-[1366/420] md:aspect-[1366/400] lg:aspect-[1366/520]">
               <Image
                 src={img.src}
                 alt={img.alt}

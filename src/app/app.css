@@ -1,5 +1,43 @@
 /* App CSS - component stylesheets */
 
+/* ─── Header ─────────────────────────────────────────────────────────────────
+   The header uses inline style for gradient/solid background so Tailwind's
+   JIT won't purge the transition. We add only what Tailwind can't do natively.
+   ──────────────────────────────────────────────────────────────────────────── */
+
+/* When scrolled, override gradient with solid purple */
+header.header-scrolled {
+  background: #68176b !important;
+  box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 31%) !important;
+}
+
+/* Dropdown — keep open while mouse bridges the gap between trigger and panel */
+.nav-dropdown-bridge {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 6px; /* bridge the gap */
+  background: transparent;
+}
+
+/* Active nav item underline indicator */
+.nav-item-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.875rem;
+  right: 0.875rem;
+  height: 2px;
+  background: #fde047; /* yellow-300 */
+  border-radius: 1px;
+}
+
+/* Mega menu — smooth image crossfade */
+.mega-school-image {
+  transition: opacity 0.3s ease;
+}
+
 /* ── DGU Difference Section — button skew fill (needs CSS pseudo targeting) */
 .diff-btn .diff-btn-fill {
   width: 150%;
