@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 
 const placements = [
   {
@@ -347,7 +347,9 @@ export default function PlacementUpdatesSection() {
 
         <div className="overflow-hidden" style={{ margin: '-8px' }}>
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]}
+            loop={true}
+            autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
               setIsBeginning(swiper.isBeginning);
