@@ -39,7 +39,7 @@ function RecruiterLogo({ recruiter }) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div className="flex items-center justify-center mx-6 cursor-pointer select-none">
+        <div className="flex items-center justify-center mx-4 lg:mx-6 cursor-pointer select-none">
           <div className="relative lg:w-[188px] w-[140px] h-[70px] lg:h-[90px] transition-transform duration-200 hover:scale-105">
             <Image src={recruiter.src} alt={recruiter.name} fill sizes="110px" className="object-contain" />
           </div>

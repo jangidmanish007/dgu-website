@@ -41,7 +41,7 @@ const genesisgalleryImages = [
 
 export default function LifeatDGU() {
   return (
-    <section className="py-10 sm:py-14 md:py-16 bg-white">
+    <section className="pb-10 pt-6 sm:pb-14 md:pb-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Section heading ─────────────────────────────────────────── */}
         <div className="text-center mb-6 sm:mb-8">
@@ -54,17 +54,40 @@ export default function LifeatDGU() {
 
         {/* ── CTA buttons ─────────────────────────────────────────────── */}
         <div className="flex items-center justify-center gap-3 sm:gap-4 mb-7 sm:mb-10">
+          {/* Photo Gallery — skew-fill hover (same animation as diff-btn) */}
           <Link
             href="/photo-gallery"
-            className="inline-flex items-center gap-2 bg-[#1a1a2e] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#2a2a4e] transition-colors"
+            className="diff-btn relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[#000] bg-[#000] px-5 py-2.5 cursor-pointer outline-none"
           >
-            Photo Gallery <ArrowRight className="w-4 h-4" />
+            <span
+              className="diff-btn-fill absolute inset-0 bg-[#68176b] [transform-origin:bottom_left] z-0"
+              aria-hidden="true"
+            />
+            <span className="diff-btn-label relative z-10 inline-flex items-center gap-1.5 text-sm font-medium text-white whitespace-nowrap transition-colors duration-200">
+              Photo Gallery
+              <ArrowRight
+                className="diff-btn-icon w-4 h-4 shrink-0 transition-transform duration-200"
+                strokeWidth={2}
+              />
+            </span>
           </Link>
+
+          {/* Video Gallery — skew-fill hover (same animation as diff-btn) */}
           <Link
             href="/video-gallery"
-            className="inline-flex items-center gap-2 border border-gray-300 text-gray-700 text-sm font-medium px-5 py-2.5 rounded-full hover:bg-gray-50 transition-colors"
+            className="diff-btn relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[#000] bg-white px-5 py-2.5 cursor-pointer outline-none"
           >
-            Video Gallery <ArrowRight className="w-4 h-4" />
+            <span
+              className="diff-btn-fill absolute inset-0 bg-[#68176b] [transform-origin:bottom_left] z-0"
+              aria-hidden="true"
+            />
+            <span className="diff-btn-label relative z-10 inline-flex items-center gap-1.5 text-sm font-medium text-[#000] whitespace-nowrap transition-colors duration-200">
+              Video Gallery
+              <ArrowRight
+                className="diff-btn-icon w-4 h-4 shrink-0 transition-transform duration-200"
+                strokeWidth={2}
+              />
+            </span>
           </Link>
         </div>
 

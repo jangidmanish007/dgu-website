@@ -109,6 +109,30 @@ export default function HomeBanner() {
         <ChevronRight className="w-5 h-5 sm:w-5 sm:h-5" strokeWidth={2.5} />
       </button>
 
+      {/* Scroll-down arrow */}
+      <button
+        aria-label="Scroll to next section"
+        onClick={() => {
+          const banner = document.querySelector('section.dgu-banner');
+          const target = banner?.nextElementSibling;
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }}
+        className="absolute bottom-15 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center cursor-pointer"
+      >
+        <style>{`
+          @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); opacity: 0.45; }
+            50%       { transform: translateY(7px); opacity: 1; }
+          }
+          .arrow-b1 { animation: bounceDown 1.4s ease-in-out infinite; }
+        `}</style>
+        {['arrow-b1'].map((cls) => (
+          <svg key={cls} width="22" height="13" viewBox="0 0 22 13" fill="none" className={`${cls} -mt-1 first:mt-0`}>
+            <path d="M1 1L11 11L21 1" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        ))}
+      </button>
+
       <Swiper
         key={isMobile ? 'mobile' : 'desktop'}
         modules={[Navigation, Autoplay]}
