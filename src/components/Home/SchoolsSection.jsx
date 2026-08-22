@@ -465,7 +465,7 @@ export default function SchoolsSection() {
   };
 
   return (
-    <section className="w-full lg:pt-10 pt-10 lg:pb-20 pb-16 px-4 bg-white overflow-hidden">
+    <section className="w-full lg:pt-10 pt-10 lg:pb-20 pb-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <motion.div
@@ -518,17 +518,18 @@ export default function SchoolsSection() {
               ))}
             </div>
           </motion.div>
-
-          {/* Right: Quick Contact form */}
-          <motion.div
-            className="w-full lg:w-[310px] xl:w-[391px] shrink-0"
-            variants={slideInRight}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <QuickContactForm />
-          </motion.div>
+          <div className="  overflow-hidden">
+            {/* Right: Quick Contact form */}
+            <motion.div
+              className="w-full lg:w-[310px] xl:w-[391px] shrink-0"
+              variants={slideInRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <QuickContactForm />
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

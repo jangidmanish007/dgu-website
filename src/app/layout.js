@@ -5,6 +5,9 @@ import ClientLayout from "./ClientLayout";
 export const metadata = {
   title: "DGU",
   description: "DGU Website",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {

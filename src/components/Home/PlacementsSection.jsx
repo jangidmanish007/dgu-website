@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
 
 /* ─── Animation variants ────────────────────────────────────────────────── */
@@ -98,8 +98,6 @@ function PlacementCard({ item }) {
 export default function PlacementsSection() {
   /* Store swiper instance directly — no ref timing issues */
   const swiperRef = useRef(null);
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
 
   return (
     <section className="w-full pt-16 pb-10 px-4 bg-white">
@@ -180,15 +178,11 @@ export default function PlacementsSection() {
           viewport={{ once: true, amount: 0.1 }}
         >
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]}
+            loop={true}
+            autoplay={{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
-              setIsBeginning(swiper.isBeginning);
-              setIsEnd(swiper.isEnd);
-            }}
-            onSlideChange={(swiper) => {
-              setIsBeginning(swiper.isBeginning);
-              setIsEnd(swiper.isEnd);
             }}
             spaceBetween={12}
             breakpoints={{
@@ -210,9 +204,8 @@ export default function PlacementsSection() {
           <div className="flex items-center justify-center gap-4 mt-6">
             <button
               onClick={() => swiperRef.current?.slidePrev()}
-              disabled={isBeginning}
               aria-label="Previous placement"
-              className="w-10 h-10 rounded-full border-2 border-[#68176b] bg-[#68176b] text-white flex items-center justify-center transition-colors duration-200 hover:bg-[#68176b] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-10 h-10 rounded-full border-2 border-[#68176b] bg-[#68176b] text-white flex items-center justify-center transition-colors duration-200 hover:bg-[#68176b] hover:text-white"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path
@@ -226,9 +219,8 @@ export default function PlacementsSection() {
             </button>
             <button
               onClick={() => swiperRef.current?.slideNext()}
-              disabled={isEnd}
               aria-label="Next placement"
-              className="w-10 h-10 rounded-full border-2 border-[#68176b] bg-[#68176b] text-white flex items-center justify-center transition-colors duration-200 hover:bg-[#68176b] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-10 h-10 rounded-full border-2 border-[#68176b] bg-[#68176b] text-white flex items-center justify-center transition-colors duration-200 hover:bg-[#68176b] hover:text-white"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path
