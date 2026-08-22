@@ -19,10 +19,9 @@ export default function MainHomePage() {
       <PlacementsSection />
       <TopRecruitersSection />
       <PlacementUpdatesSection />
-      <DBCGlobal/>
-      <CampusNews/>
-      <LifeatDGU/>
-
+      <DBCGlobal />
+      <CampusNews />
+      <LifeatDGU />
     </>
   );
 }

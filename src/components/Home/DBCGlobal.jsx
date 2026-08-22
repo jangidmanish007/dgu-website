@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Marquee from 'react-fast-marquee';
 
-export default function PlacementCardsSection() {
+export default function DBCGlobal() {
   const cardGradientStyle = {
     background:
       'radial-gradient(120% 90% at 80% 6%, rgba(246, 180, 0, .18), transparent 55%), radial-gradient(120% 100% at 0% 100%, rgba(106, 28, 110, .1), transparent 55%), linear-gradient(180deg, #fffdf8 0%, #cc60ff 100%)',
