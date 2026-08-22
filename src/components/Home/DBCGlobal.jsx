@@ -117,7 +117,7 @@ export default function PlacementCardsSection() {
                   MARQUEE
               ================================================== */}
 
-              <div className="py-4">
+              <div className="pt-4 lg:pt-6">
                 <div className="relative w-full overflow-hidden" style={marqueeMaskStyle}>
                   <Marquee pauseOnHover={true} speed={40} direction="right" gradient={false}>
                     {careerData.map((item, index) => (
@@ -164,13 +164,13 @@ export default function PlacementCardsSection() {
                   MARQUEE
               ================================================== */}
 
-              <div className="py-4">
+              <div className="pt-4 lg:pt-6">
                 <div className="relative w-full overflow-hidden" style={marqueeMaskStyle}>
                   <Marquee pauseOnHover={true} speed={45} direction="right" gradient={false}>
                     {startupData.map((item, index) => (
                       <div
                         key={index}
-                        className="mx-3 flex lg:h-[390px] h-[340px] w-[280px] lg:w-[300px] shrink-0 flex-col justify-between overflow-hidden rounded-2xl bg-white lg:h-[424px] lg:w-[339px]"
+                        className="dbc-marquee-card mx-3 flex lg:h-[390px] h-[340px] w-[280px] lg:w-[300px] shrink-0 flex-col justify-between overflow-hidden rounded-2xl bg-white lg:h-[424px] lg:w-[339px]"
                       >
                         <img
                           src={item.image}
