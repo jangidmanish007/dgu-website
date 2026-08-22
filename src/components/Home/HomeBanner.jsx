@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
@@ -9,7 +9,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-const bannerImages = [
+// Desktop images (13 slides)
+const desktopImages = [
   { src: '/images/banner-slider-img-1.webp', alt: 'Banner 1' },
   { src: '/images/banner-slider-img-2.webp', alt: 'Banner 2' },
   { src: '/images/banner-slider-img-3.webp', alt: 'Banner 3' },
@@ -25,9 +26,44 @@ const bannerImages = [
   { src: '/images/banner-slider-img-13.webp', alt: 'Banner 13' },
 ];
 
+// Mobile images (12 slides) — used on screens narrower than Tailwind's `sm` (640 px)
+const mobileImages = [
+  { src: '/images/mobile-home-slider-img-1.webp', alt: 'Banner 1' },
+  { src: '/images/mobile-home-slider-img-2.webp', alt: 'Banner 2' },
+  { src: '/images/mobile-home-slider-img-3.webp', alt: 'Banner 3' },
+  { src: '/images/mobile-home-slider-img-4.webp', alt: 'Banner 4' },
+  { src: '/images/mobile-home-slider-img-5.webp', alt: 'Banner 5' },
+  { src: '/images/mobile-home-slider-img-6.webp', alt: 'Banner 6' },
+  { src: '/images/mobile-home-slider-img-7.webp', alt: 'Banner 7' },
+  { src: '/images/mobile-home-slider-img-8.webp', alt: 'Banner 8' },
+  { src: '/images/mobile-home-slider-img-9.webp', alt: 'Banner 9' },
+  { src: '/images/mobile-home-slider-img-10.webp', alt: 'Banner 10' },
+  { src: '/images/mobile-home-slider-img-11.webp', alt: 'Banner 11' },
+  { src: '/images/mobile-home-slider-img-12.webp', alt: 'Banner 12' },
+];
+
+/** Returns true when the viewport is below Tailwind's `sm` breakpoint (640 px). */
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 639px)');
+    setIsMobile(mq.matches);
+
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  return isMobile;
+}
+
 export default function HomeBanner() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const isMobile = useIsMobile();
+
+  const bannerImages = isMobile ? mobileImages : desktopImages;
 
   return (
     <section className="dgu-banner relative w-full overflow-hidden">
@@ -74,6 +110,7 @@ export default function HomeBanner() {
       </button>
 
       <Swiper
+        key={isMobile ? 'mobile' : 'desktop'}
         modules={[Navigation, Autoplay]}
         navigation={{
           prevEl: prevRef.current,
@@ -92,7 +129,7 @@ export default function HomeBanner() {
       >
         {bannerImages.map((img, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full aspect-[1366/450] sm:aspect-[1366/420] md:aspect-[1366/400] lg:aspect-[1366/480]">
+            <div className="relative w-full aspect-[390/570] sm:aspect-[1366/420] md:aspect-[1366/400] lg:aspect-[1366/480]">
               <Image
                 src={img.src}
                 alt={img.alt}

@@ -1,0 +1,44 @@
+'use client';
+
+import * as React from 'react';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { cn } from '@/lib/utils';
+
+function TooltipProvider({ delayDuration = 0, ...props }) {
+  return <TooltipPrimitive.Provider delayDuration={delayDuration} {...props} />;
+}
+
+function Tooltip({ ...props }) {
+  return <TooltipPrimitive.Root {...props} />;
+}
+
+function TooltipTrigger({ ...props }) {
+  return <TooltipPrimitive.Trigger {...props} />;
+}
+
+function TooltipContent({ className, sideOffset = -30, ...props }) {
+  return (
+    <TooltipPrimitive.Portal>
+      <TooltipPrimitive.Content
+        sideOffset={sideOffset}
+        className={cn(
+          // base
+          'z-50 overflow-visible rounded-md px-3 py-1.5 text-sm font-medium text-white shadow-md',
+          // animate
+          'animate-in fade-in-0 zoom-in-95',
+          'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
+          'data-[side=bottom]:slide-in-from-top-2',
+          'data-[side=top]:slide-in-from-bottom-2',
+          className,
+        )}
+        {...props}
+      >
+        {props.children}
+        {/* Arrow pointing downward (tooltip is above the trigger, arrow points down) */}
+        <TooltipPrimitive.Arrow className="fill-[#68176b]" width={12} height={6} />
+      </TooltipPrimitive.Content>
+    </TooltipPrimitive.Portal>
+  );
+}
+
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

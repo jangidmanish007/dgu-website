@@ -1,1 +1,20 @@
 /* App CSS - component stylesheets */
+
+/* ── DGU Difference Section — button skew fill (needs CSS pseudo targeting) */
+.diff-btn .diff-btn-fill {
+  width: 150%;
+  transform: translateX(-110%) skewX(50deg);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.diff-btn:hover .diff-btn-fill {
+  transform: translateX(0%) skewX(50deg);
+}
+
+.diff-btn:hover .diff-btn-label {
+  color: #ffffff;
+}
+
+.diff-btn:hover .diff-btn-icon {
+  transform: translateX(3px);
+}
