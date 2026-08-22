@@ -353,7 +353,7 @@ export default function CampusNews() {
   const nextRef = useRef(null);
 
   return (
-    <section className="pb-10 sm:pb-14 pt-4 md:pb-16 bg-white border-t border-gray-100">
+    <section className="pb-10 sm:pb-14 pt-4 md:pb-16 bg-white border-t border-gray-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px] gap-8 lg:gap-10">
           {/* ── LEFT: Campus News carousel ─────────────────────────────── */}

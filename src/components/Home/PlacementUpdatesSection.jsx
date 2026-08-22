@@ -302,7 +302,7 @@ export default function PlacementUpdatesSection() {
   const swiperRef = useRef(null);
 
   return (
-    <section className="w-full pt-8 pb-8 ">
+    <section className="w-full pt-8 pb-8 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8"

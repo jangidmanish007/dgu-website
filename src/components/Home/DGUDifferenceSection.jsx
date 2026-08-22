@@ -153,7 +153,7 @@ function GridCard({ card }) {
 export default function DGUDifferenceSection() {
   return (
     <section
-      className="relative w-full py-12 md:py-16 px-4"
+      className="relative w-full py-12 md:py-16 px-4 overflow-hidden"
       style={{
         backgroundImage: "url('/images/dgu-dffrence-bg-img.webp')",
         backgroundAttachment: 'fixed',

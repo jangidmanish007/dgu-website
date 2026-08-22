@@ -288,7 +288,7 @@ export default function DBCGlobal() {
   };
 
   return (
-    <section className="w-full bg-gray-50 px-2 py-6">
+    <section className="w-full bg-gray-50 px-2 py-6 overflow-hidden">
       <div className="w-full">
         <motion.div
           className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3"

@@ -63,7 +63,7 @@ function RecruiterLogo({ recruiter }) {
 export default function TopRecruitersSection() {
   return (
     <TooltipProvider>
-      <section className="w-full pb-10 bg-white">
+      <section className="w-full pb-10 bg-white overflow-hidden">
         {/* Heading */}
         <motion.div
           className="text-center mb-6"

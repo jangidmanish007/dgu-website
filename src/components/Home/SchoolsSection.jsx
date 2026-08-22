@@ -465,7 +465,7 @@ export default function SchoolsSection() {
   };
 
   return (
-    <section className="w-full lg:pt-10 pt-10 lg:pb-20 pb-16 px-4 bg-white">
+    <section className="w-full lg:pt-10 pt-10 lg:pb-20 pb-16 px-4 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <motion.div
