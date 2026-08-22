@@ -251,13 +251,13 @@ export default function DBCGlobal() {
   const videosData = [
     {
       title: 'DGU Placements 2026',
-      desc: '₹40 LPA Highest Package! Listen to our students share their real-world experiences.',
-      youtubeId: 'dQw4w9WgXcQ',
+      desc: '₹40 LPA Highest Package! Listen to our students share their real-world experiences and how the campus life has shaped their professional journeys.',
+      youtubeId: 'ocr6F-IlbAI',
     },
     {
       title: 'Alumni Speaks - Abhishek Halder',
       desc: "Discover how campus life shaped Abhishek's journey towards career success.",
-      youtubeId: '3JZ_D3ELwOQ',
+      youtubeId: '7lShPXk3Rys',
     },
   ];
 
