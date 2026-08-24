@@ -28,17 +28,24 @@ export const mainNavItems = [
         label: 'About DGU',
         href: '/about-dgu',
         children: [
-          { label: 'Vision & Mission', href: '/about-dgu/vision-mission' },
-          { label: 'Chancellor\'s Message', href: '/about-dgu/chancellors-message' },
-          { label: 'VC\'s Message', href: '/about-dgu/vc-message' },
+          { label: 'DGU at a Glance', href: '/dgu-at-glance' },
+          { label: 'The City-Dehradun - How to Reach', href: '/how-to-reach' },
+          { label: 'Uttarakhand Private Universities Act', href: 'https://dgu.ac.in/uploads/documents/doc-8789_the-uttarakhand-private-university-act-2024.pdf' },
         ],
       },
       {
         label: 'Leadership & Governance',
         href: '/leadership-governance',
         children: [
-          { label: 'Board of Governors', href: '/leadership-governance/board-of-governors' },
+          { label: 'The Visitor', href: '/leadership-governance/board-of-governors' },
+          { label: 'Board of Governors', href: '/leadership-governance/academic-council' },
+          { label: 'Board of Management', href: '/leadership-governance/academic-council' },
           { label: 'Academic Council', href: '/leadership-governance/academic-council' },
+          { label: 'Finance Committee', href: '/leadership-governance/academic-council' },
+          { label: 'Board of Studies', href: '/leadership-governance/academic-council' },
+          { label: 'Board of Examination', href: '/leadership-governance/academic-council' },
+          { label: 'Industry Advisory Board', href: '/leadership-governance/academic-council' },
+          { label: 'Office of International Affairs', href: '/leadership-governance/academic-council' },
         ],
       },
       {

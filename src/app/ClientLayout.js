@@ -1,6 +1,7 @@
 'use client';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import FloatingContact from '@/components/common/FloatingContact';
 
 export default function ClientLayout({ children }) {
   return (
@@ -11,6 +12,7 @@ export default function ClientLayout({ children }) {
         {children}
       </main>
       <Footer />
+      <FloatingContact />
     </>
   );
 }

@@ -98,20 +98,20 @@ const schools = [
     icon: faLeaf,
     programs: [
       {
-        name: 'B.Sc. Agriculture',
+        name: 'B.Sc Agriculture (Honours)',
         slug: 'bsc-agriculture',
       },
       {
-        name: 'B.Sc. Forestry',
+        name: 'B.Sc Forestry (Honours)',
         slug: 'bsc-forestry',
       },
       {
-        name: 'B.Sc. Horticulture',
-        slug: 'bsc-horticulture',
+        name: 'B.Sc with Specialization in Agri Business',
+        slug: 'bsc-agri-business',
       },
       {
-        name: 'M.Sc. Agriculture',
-        slug: 'msc-agriculture',
+        name: 'M.Sc Agronomy',
+        slug: 'msc-agronomy',
       },
     ],
   },
@@ -201,16 +201,104 @@ const schoolsRight = [
     icon: faLightbulb,
     programs: [
       {
-        name: 'B.Sc. Data Analytics',
-        slug: 'bsc-data-analytics',
+        name: 'SAP',
+        slug: 'sap',
       },
       {
-        name: 'B.Sc. Cyber Security',
-        slug: 'bsc-cyber-security',
+        name: 'SAS',
+        slug: 'sas',
       },
       {
-        name: 'B.Sc. Cloud Computing',
-        slug: 'bsc-cloud-computing',
+        name: 'Artificial Intelligence',
+        slug: 'artificial-intelligence',
+      },
+      {
+        name: 'E-Commerce',
+        slug: 'e-commerce',
+      },
+      {
+        name: 'AGILE & SCRUM',
+        slug: 'agile-and-scrum',
+      },
+      {
+        name: 'Big Data, Python & R',
+        slug: 'big-data-python-and-r',
+      },
+      {
+        name: 'NISM Certifications',
+        slug: 'nism-certifications',
+      },
+      {
+        name: 'International Logistics',
+        slug: 'international-logistics',
+      },
+      {
+        name: 'French Language',
+        slug: 'french-language',
+      },
+      {
+        name: 'Digital Marketing',
+        slug: 'digital-marketing',
+      },
+      {
+        name: 'HR Analytics',
+        slug: 'hr-analytics',
+      },
+      {
+        name: 'Derivatives',
+        slug: 'derivatives',
+      },
+      {
+        name: 'Data Analytics Tools',
+        slug: 'data-analytics-tools',
+      },
+      {
+        name: 'Rapidminer/Tableau',
+        slug: 'rapidminer-tableau',
+      },
+      {
+        name: 'Luxury Brand Marketing',
+        slug: 'luxury-brand-marketing',
+      },
+      {
+        name: 'Social Media Marketing',
+        slug: 'social-media-marketing',
+      },
+      {
+        name: 'Computerised Accounting Tally',
+        slug: 'computerised-accounting-tally',
+      },
+      {
+        name: 'Basic/Advanced Excel',
+        slug: 'basic-advanced-excel',
+      },
+      {
+        name: 'Big Data Analytics',
+        slug: 'big-data-analytics',
+      },
+      {
+        name: 'Machine Learning',
+        slug: 'machine-learning',
+      },
+      {
+        name: 'Internet of Things (IOT)',
+        slug: 'internet-of-things',
+      },
+      {
+        name: 'Java Technologies',
+        slug: 'java-technologies',
+      },
+      {
+        name: 'Website Development & Implementation',
+        slug: 'website-development-and-implementation',
+      },
+      {
+        name: '.NET Framework Networking',
+        slug: 'net-framework-networking',
+      },
+      {
+        name: 'Red Hat Linux',
+        slug: 'red-hat-linux',
       },
     ],
   },
@@ -294,7 +382,7 @@ function SchoolRow({ school, isOpen, onToggle, isMobile }) {
           Mobile   → static/relative, pushes content down naturally     */}
       <div
         className={cn(
-          'bg-white z-20',
+          'bg-white z-20 rounded-b-md',
           /* Desktop: absolute overlay */
           'lg:absolute lg:left-0 lg:right-0',
           'transition-all duration-300 ease-out origin-top',
