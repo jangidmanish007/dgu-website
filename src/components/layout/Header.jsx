@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useLayoutEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronDown, ChevronRight, ChevronLeft, Menu, X } from 'lucide-react';
@@ -27,53 +27,76 @@ function DropdownMenu({ items, isOpen }) {
         const isActive = activeL1 === item.label;
 
         return (
-          <div
+          <L1DropdownItem
             key={item.label}
-            className="relative group/l1"
-            onMouseEnter={() => setActiveL1(item.label)}
-            onMouseLeave={() => setActiveL1(null)}
-          >
-            <Link
-              href={item.href}
-              className={`
-                flex items-center justify-between px-5 py-3 text-[13px] font-medium
-                border-b border-gray-100 last:border-0
-                transition-colors duration-150
-                ${isActive ? 'bg-[#390c46] text-white' : 'text-gray-800 hover:bg-[#390c46] hover:text-white'}
-              `}
-            >
-              <span>{item.label}</span>
-              {hasChildren && <ChevronRight className="w-3.5 h-3.5 shrink-0 ml-2" />}
-            </Link>
-
-            {/* Level-2 flyout */}
-            {hasChildren && (
-              <div
-                className={`
-                  absolute top-0 left-full z-50 min-w-[300px] bg-white shadow-xl
-                  transition-all duration-150 origin-top-left
-                  ${isActive ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}
-                `}
-              >
-                {item.children.map((child) => (
-                  <Link
-                    key={child.label}
-                    href={child.href}
-                    className="
-                      block px-5 py-3 text-[13px] text-gray-800
-                      border-b border-gray-100 last:border-0
-                      hover:bg-[#390c46] hover:text-white
-                      transition-colors duration-150
-                    "
-                  >
-                    {child.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+            item={item}
+            hasChildren={hasChildren}
+            isActive={isActive}
+            onEnter={() => setActiveL1(item.label)}
+            onLeave={() => setActiveL1(null)}
+          />
         );
       })}
+    </div>
+  );
+}
+
+// ─── L1 item with smart flyout direction ─────────────────────────────────────
+function L1DropdownItem({ item, hasChildren, isActive, onEnter, onLeave }) {
+  const rowRef = useRef(null);
+  const [flyoutLeft, setFlyoutLeft] = useState(false); // false = open right, true = open left
+
+  useLayoutEffect(() => {
+    if (!isActive || !hasChildren || !rowRef.current) return;
+
+    const rect = rowRef.current.getBoundingClientRect();
+    const flyoutWidth = 300; // min-w-[300px]
+    const spaceOnRight = window.innerWidth - rect.right;
+
+    setFlyoutLeft(spaceOnRight < flyoutWidth);
+  }, [isActive, hasChildren]);
+
+  return (
+    <div ref={rowRef} className="relative" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+      <Link
+        href={item.href}
+        className={`
+          flex items-center justify-between px-5 py-3 text-[13px] font-medium
+          border-b border-gray-100 last:border-0
+          transition-colors duration-150
+          ${isActive ? 'bg-[#390c46] text-white' : 'text-gray-800 hover:bg-[#390c46] hover:text-white'}
+        `}
+      >
+        <span>{item.label}</span>
+        {hasChildren && <ChevronRight className="w-3.5 h-3.5 shrink-0 ml-2" />}
+      </Link>
+
+      {/* Level-2 flyout — flips left when there's no room on the right */}
+      {hasChildren && (
+        <div
+          className={`
+            absolute top-0 z-50 min-w-[300px] bg-white shadow-xl
+            transition-all duration-150 max-h-[400px] overflow-y-auto nav-dropdown-scroll
+            ${flyoutLeft ? 'right-full origin-top-right' : 'left-full origin-top-left'}
+            ${isActive ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}
+          `}
+        >
+          {item.children.map((child) => (
+            <Link
+              key={child.label}
+              href={child.href}
+              className="
+                block px-5 py-3 text-[13px] text-gray-800
+                border-b border-gray-100 last:border-0
+                hover:bg-[#390c46] hover:text-white
+                transition-colors duration-150
+              "
+            >
+              {child.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -94,7 +94,6 @@ export const mainNavItems = [
       },
     ],
   },
-
   {
     id: 'programs',
     label: 'Programs',
@@ -189,7 +188,6 @@ export const mainNavItems = [
       },
     ],
   },
-
   {
     id: 'admission',
     label: 'Admission',
@@ -280,31 +278,61 @@ export const mainNavItems = [
       },
     ],
   },
-
   {
     id: 'resources',
     label: 'Resources',
     type: 'dropdown',
     items: [
       {
-        label: 'Library',
-        href: '/resources/library',
-        children: [],
+        label: 'Media',
+        href: '/library',
+        children: [
+          { label: 'In the News', href: '/academics/research/centers' },
+          { label: 'Photo Gallery', href: '/academics/research/publications' },
+          { label: 'Video Gallery', href: '/academics/research/publications' },
+        ],
       },
       {
-        label: 'E-Resources',
-        href: '/resources/e-resources',
-        children: [],
+        label: 'Important Links',
+        href: '/e-resources',
+        children: [
+          { label: 'Grievance Redressal Form', href: '/academics/research/centers' },
+          { label: 'Anti-Discrimination Form', href: '/academics/research/publications' },
+          { label: 'Gazette Notification for establishment of DBS Global University', href: '/academics/research/publications' },
+        ],
       },
       {
-        label: 'Downloads',
-        href: '/resources/downloads',
-        children: [],
+        label: 'Payments',
+        href: '/downloads',
+        children: [
+          { label: 'Online - DGU Fee Portal', href: '/academics/research/centers' },
+        ],
       },
       {
-        label: 'NAAC',
-        href: '/resources/naac',
-        children: [],
+        label: 'Helpful Resources',
+        href: '/naac',
+        children: [
+          { label: 'Admission Notices', href: '/academics/research/centers' },
+          { label: 'Campus & Event News', href: '/academics/research/centers' },
+          { label: 'Placement News', href: '/academics/research/centers' },
+          { label: 'Blogs', href: '/academics/research/centers' },
+          { label: 'Onspot Admissions', href: '/academics/research/centers' },
+          { label: 'UGC Proforma / Mandatory Disclosure', href: '/academics/research/centers' },
+          { label: 'UGC Letter', href: '/academics/research/centers' },
+          { label: 'Association of Indian Universities', href: '/academics/research/centers' },
+          { label: 'Equal Opportunity Cell', href: '/academics/research/centers' },
+          { label: 'Student Grievance Redressal Committee', href: '/academics/research/centers' },
+          { label: 'Constitution of Anti Narcotic', href: '/academics/research/centers' },
+          { label: 'Constitution of Internal Complaints', href: '/academics/research/centers' },
+          { label: 'Ombudsperson', href: '/academics/research/centers' },
+          { label: 'Public Self Disclosure', href: '/academics/research/centers' },
+          { label: 'Form No. 10AC for Section 80 G for Donation', href: '/academics/research/centers' },
+          { label: 'Model Statutes', href: '/academics/research/centers' },
+          { label: 'Institutional Development Plan', href: '/academics/research/centers' },
+          { label: 'PCI Approval', href: '/academics/research/centers' },
+          { label: 'Downloads', href: '/academics/research/centers' },
+          { label: 'Student Hand Book', href: '/academics/research/centers' },
+        ],
       },
     ],
   },
