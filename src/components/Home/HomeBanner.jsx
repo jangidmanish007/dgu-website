@@ -4,7 +4,7 @@ import BannerSlider from '@/components/common/BannerSlider';
 
 // Desktop images (13 slides)
 const desktopImages = [
-  { src: 'images/home/banner-slider-img-1.webp', alt: 'Banner 1' },
+  { src: 'images/home/banner-slider-img-13.webp', alt: 'Banner 13' },
   { src: 'images/home/banner-slider-img-2.webp', alt: 'Banner 2' },
   { src: 'images/home/banner-slider-img-3.webp', alt: 'Banner 3' },
   { src: 'images/home/banner-slider-img-4.webp', alt: 'Banner 4' },
@@ -16,7 +16,7 @@ const desktopImages = [
   { src: 'images/home/banner-slider-img-10.webp', alt: 'Banner 10' },
   { src: 'images/home/banner-slider-img-11.webp', alt: 'Banner 11' },
   { src: 'images/home/banner-slider-img-12.webp', alt: 'Banner 12' },
-  { src: 'images/home/banner-slider-img-13.webp', alt: 'Banner 13' },
+  { src: 'images/home/banner-slider-img-1.webp', alt: 'Banner 1' },
 ];
 
 // Mobile images (12 slides) — used on screens narrower than Tailwind's `sm` (640 px)
