@@ -391,7 +391,7 @@ function SchoolRow({ school, isOpen, onToggle, isMobile }) {
           isMobile ? (open ? 'max-h-[500px]' : 'max-h-0 overflow-hidden') : '',
         )}
       >
-        <ul className="px-3 py-2 space-y-0.5 max-h-[350px] overflow-y-auto">
+        <ul className="px-3 py-2 space-y-0.5 max-h-[350px] overflow-y-auto nav-dropdown-scroll">
           {school.programs.map((prog, i) => (
             <li key={i} className="min-h-[40px]">
               <a
