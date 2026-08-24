@@ -21,37 +21,37 @@ const stagger = {
 const placements = [
   {
     id: 1,
-    image: '/images/placement-img-1.webp',
+    image: 'images/home/placement-img-1.webp',
     company: 'Indigo Paints Limited',
     name: 'Nishant Jain',
   },
   {
     id: 2,
-    image: '/images/placement-img-2.webp',
+    image: 'images/home/placement-img-2.webp',
     company: 'Reliance Retail',
     name: 'Nikita',
   },
   {
     id: 3,
-    image: '/images/placement-img-3.webp',
+    image: 'images/home/placement-img-3.webp',
     company: 'Tech Mahindra',
     name: 'Arsalan Ahmad',
   },
   {
     id: 4,
-    image: '/images/placement-img-4.webp',
+    image: 'images/home/placement-img-4.webp',
     company: 'Hafele India Pvt. Ltd.',
     name: 'Ria Pandita',
   },
   {
     id: 5,
-    image: '/images/placement-img-5.webp',
+    image: 'images/home/placement-img-5.webp',
     company: 'Deloitte',
     name: 'Abhishek Rajpoot',
   },
   {
     id: 6,
-    image: '/images/placement-img-6.webp',
+    image: 'images/home/placement-img-6.webp',
     company: 'Crescendo Global',
     name: 'Divya Sopta',
   },
@@ -70,7 +70,7 @@ function PlacementCard({ item }) {
     >
       {/* Photo */}
       <Image
-        src={item.image}
+        src={process.env.NEXT_PUBLIC_IMG_PATH + item.image}
         alt={item.name}
         fill
         unoptimized

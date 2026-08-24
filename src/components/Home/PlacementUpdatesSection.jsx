@@ -15,7 +15,7 @@ const fadeUp = {
 const placements = [
   {
     id: 1,
-    image: '/images/placement-update-img-1.webp',
+    image: 'images/home/placement-update-img-1.webp',
     date: '03 Aug, 2026',
     title: 'Three DGU B.Tech Students Selected for IEEE Summer of Code 2026',
     description:
@@ -25,7 +25,7 @@ const placements = [
 
   {
     id: 2,
-    image: '/images/placement-update-img-2.webp',
+    image: 'images/home/placement-update-img-2.webp',
     date: '30 Jun, 2026',
     title: 'IND Global Realty Selects Students Through Campus Recruitment',
     description:
@@ -35,7 +35,7 @@ const placements = [
 
   {
     id: 3,
-    image: '/images/placement-update-img-3.webp',
+    image: 'images/home/placement-update-img-3.webp',
     date: '18 May, 2026',
     title: 'Student Secures Placement at Ronak Group Africa, a Global FMCG and Pharma Conglomerate',
     description:
@@ -45,7 +45,7 @@ const placements = [
 
   {
     id: 4,
-    image: '/images/placement-update-img-4.webp',
+    image: 'images/home/placement-update-img-4.webp',
     date: '15 May, 2026',
     title: 'AI Focused Learning Translates into AI-Ready Placement Success at Centific',
     description:
@@ -55,7 +55,7 @@ const placements = [
 
   {
     id: 5,
-    image: '/images/placement-update-img-5.webp',
+    image: 'images/home/placement-update-img-5.webp',
     date: '12 May, 2026',
     title: 'Celebrating Future Ready Talent Entering the Banking and Insurance Industry with HDFC Life',
     description:
@@ -65,7 +65,7 @@ const placements = [
 
   {
     id: 6,
-    image: '/images/placement-update-img-6.webp',
+    image: 'images/home/placement-update-img-6.webp',
     date: '07 May, 2026',
     title: 'Beginning the Corporate Journey with HCL India',
     description:
@@ -75,7 +75,7 @@ const placements = [
 
   {
     id: 7,
-    image: '/images/placement-update-img-7.webp',
+    image: 'images/home/placement-update-img-7.webp',
     date: '02 May, 2026',
     title: 'Perseverance Rewarded as Eleven Students Secure Careers with Shree Cement',
     description:
@@ -85,7 +85,7 @@ const placements = [
 
   {
     id: 8,
-    image: '/images/placement-update-img-8.webp',
+    image: 'images/home/placement-update-img-8.webp',
     date: '05 Apr, 2026',
     title: 'DBS Global University Strengthens Career Outcomes Through High Placements at Tech Mahindra',
     description:
@@ -95,7 +95,7 @@ const placements = [
 
   {
     id: 9,
-    image: '/images/placement-update-img-9.webp',
+    image: 'images/home/placement-update-img-9.webp',
     date: '04 Apr, 2026',
     title: 'Beginning the Corporate Journey with Hafele India',
     description:
@@ -105,7 +105,7 @@ const placements = [
 
   {
     id: 10,
-    image: '/images/placement-update-img-10.webp',
+    image: 'images/home/placement-update-img-10.webp',
     date: '03 Apr, 2026',
     title: 'DGU strengthens Placement Record with Asian Paints',
     description: 'DBS Global University proudly announces another successful placement milestone with Asian Paints.',
@@ -114,7 +114,7 @@ const placements = [
 
   {
     id: 11,
-    image: '/images/placement-update-img-11.webp',
+    image: 'images/home/placement-update-img-11.webp',
     date: '03 Apr, 2026',
     title: 'DBS Global University Celebrates Student Placements at Deloitte',
     description:
@@ -124,7 +124,7 @@ const placements = [
 
   {
     id: 12,
-    image: '/images/placement-update-img-12.webp',
+    image: 'images/home/placement-update-img-12.webp',
     date: '02 Apr, 2026',
     title: 'DBS Global University Students Secure Placements at Crescendo',
     description:
@@ -134,7 +134,7 @@ const placements = [
 
   {
     id: 13,
-    image: '/images/placement-update-img-13.webp',
+    image: 'images/home/placement-update-img-13.webp',
     date: '31 Mar, 2026',
     title: 'DBS Global University Students Secure SAP Roles at Tech Mahindra',
     description:
@@ -144,7 +144,7 @@ const placements = [
 
   {
     id: 14,
-    image: '/images/placement-update-img-14.webp',
+    image: 'images/home/placement-update-img-14.webp',
     date: '30 Mar, 2026',
     title: 'Growing into the Manufacturing Career with Hero Cycles',
     description:
@@ -154,7 +154,7 @@ const placements = [
 
   {
     id: 15,
-    image: '/images/placement-update-img-15.webp',
+    image: 'images/home/placement-update-img-15.webp',
     date: '29 Mar, 2026',
     title: 'Rising in the cement industry after a successful placement in JK Cement',
     description:
@@ -164,7 +164,7 @@ const placements = [
 
   {
     id: 16,
-    image: '/images/placement-update-img-16.webp',
+    image: 'images/home/placement-update-img-16.webp',
     date: '28 Mar, 2026',
     title: 'Securing a successful placement in Compliance Roles with AML RightSource',
     description:
@@ -174,7 +174,7 @@ const placements = [
 
   {
     id: 17,
-    image: '/images/placement-update-img-17.webp',
+    image: 'images/home/placement-update-img-17.webp',
     date: '07 Mar, 2026',
     title: 'Journey of Being a Future Realtor Begins with Workians Realty',
     description:
@@ -184,7 +184,7 @@ const placements = [
 
   {
     id: 18,
-    image: '/images/placement-update-img-18.webp',
+    image: 'images/home/placement-update-img-18.webp',
     date: '04 Mar, 2026',
     title: 'Stepping into an EdTech career after a successful placement with Great Lakes',
     description:
@@ -194,7 +194,7 @@ const placements = [
 
   {
     id: 19,
-    image: '/images/placement-update-img-19.webp',
+    image: 'images/home/placement-update-img-19.webp',
     date: '03 Mar, 2026',
     title: 'Achieving the dream of being placed with Kryoss',
     description:
@@ -204,7 +204,7 @@ const placements = [
 
   {
     id: 20,
-    image: '/images/placement-update-img-20.webp',
+    image: 'images/home/placement-update-img-20.webp',
     date: '02 Mar, 2026',
     title: 'A strong start in the finance industry with Direct Credit, The MSME Experts',
     description:
@@ -214,7 +214,7 @@ const placements = [
 
   {
     id: 21,
-    image: '/images/placement-update-img-21.webp',
+    image: 'images/home/placement-update-img-21.webp',
     date: '25 Feb, 2026',
     title: 'Mozaiq Automation Pvt. Ltd. Identifies Top Talent, Recruits Five Students Through Campus Placements',
     description:
@@ -224,7 +224,7 @@ const placements = [
 
   {
     id: 22,
-    image: '/images/placement-update-img-22.webp',
+    image: 'images/home/placement-update-img-22.webp',
     date: '20 Feb, 2026',
     title: 'Beginning the International Engineering journey with Aswan',
     description:
@@ -234,7 +234,7 @@ const placements = [
 
   {
     id: 23,
-    image: '/images/placement-update-img-23.webp',
+    image: 'images/home/placement-update-img-23.webp',
     date: '20 Feb, 2026',
     title: 'Building innovative solutions in the top industry with Somany tiles',
     description:
@@ -257,7 +257,7 @@ function PlacementUpdateCard({ item }) {
       <div className="relative w-full overflow-hidden" style={{ paddingTop: '68%' }}>
         {/* Main card image — scales on hover */}
         <Image
-          src={item.image}
+          src={process.env.NEXT_PUBLIC_IMG_PATH + item.image}
           alt={item.title}
           fill
           sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 32vw"

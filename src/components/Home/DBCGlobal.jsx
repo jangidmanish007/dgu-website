@@ -213,7 +213,7 @@ function DraggableMarquee({ items, speed = 40, mobileDirection, desktopDirection
             style={{ height: undefined }}
           >
             <img
-              src={item.image}
+              src={process.env.NEXT_PUBLIC_IMG_PATH + item.image}
               className="h-[340px] w-[280px] lg:h-[390px] lg:w-[300px] rounded-2xl object-cover pointer-events-none"
               alt={`card-${index}`}
               draggable={false}
@@ -240,15 +240,15 @@ export default function DBCGlobal() {
   // =========================================================
 
   const careerData = [
-    { image: '/images/B1.webp' },
-    { image: '/images/B2.webp' },
-    { image: '/images/B3.webp' },
-    { image: '/images/B4.webp' },
-    { image: '/images/B5.webp' },
-    { image: '/images/B6.webp' },
-    { image: '/images/B7.webp' },
-    { image: '/images/B8.webp' },
-    { image: '/images/B9.webp' },
+    { image: 'images/home/B1.webp' },
+    { image: 'images/home/B2.webp' },
+    { image: 'images/home/B3.webp' },
+    { image: 'images/home/B4.webp' },
+    { image: 'images/home/B5.webp' },
+    { image: 'images/home/B6.webp' },
+    { image: 'images/home/B7.webp' },
+    { image: 'images/home/B8.webp' },
+    { image: 'images/home/B9.webp' },
   ];
 
   // =========================================================
@@ -256,14 +256,14 @@ export default function DBCGlobal() {
   // =========================================================
 
   const startupData = [
-    { image: '/images/B10.webp' },
-    { image: '/images/B11.webp' },
-    { image: '/images/B12.webp' },
-    { image: '/images/B13.webp' },
-    { image: '/images/B14.webp' },
-    { image: '/images/B15.webp' },
-    { image: '/images/B16.webp' },
-    { image: '/images/B17.webp' },
+    { image: 'images/home/B10.webp' },
+    { image: 'images/home/B11.webp' },
+    { image: 'images/home/B12.webp' },
+    { image: 'images/home/B13.webp' },
+    { image: 'images/home/B14.webp' },
+    { image: 'images/home/B15.webp' },
+    { image: 'images/home/B16.webp' },
+    { image: 'images/home/B17.webp' },
   ];
 
   // =========================================================

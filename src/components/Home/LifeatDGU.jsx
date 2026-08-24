@@ -22,33 +22,33 @@ const stagger = {
 };
 
 const galleryImages = [
-  { src: '/images/26146_mba-farewell-07.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
-  { src: '/images/19608_mba-farewell-10.webp', alt: 'Campus Life', caption: 'Campus Life' },
-  { src: '/images/36179_mba-farewell-03.webp', alt: 'Cultural Events', caption: 'Cultural Events' },
-  { src: '/images/46586_mba-farewell-09.webp', alt: 'Sports Day', caption: 'Sports Day' },
-  { src: '/images/59809_mba-farewell-02.webp', alt: 'Annual Fest', caption: 'Annual Fest' },
+  { src: 'images/home/26146_mba-farewell-07.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
+  { src: 'images/home/19608_mba-farewell-10.webp', alt: 'Campus Life', caption: 'Campus Life' },
+  { src: 'images/home/36179_mba-farewell-03.webp', alt: 'Cultural Events', caption: 'Cultural Events' },
+  { src: 'images/home/46586_mba-farewell-09.webp', alt: 'Sports Day', caption: 'Sports Day' },
+  { src: 'images/home/59809_mba-farewell-02.webp', alt: 'Annual Fest', caption: 'Annual Fest' },
 ];
 
 const BallPollgalleryImages = [
-  { src: '/images/_40979_ball-pool-img1.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
-  { src: '/images/_57359_ball-pool-img3.webp', alt: 'Campus Life', caption: 'Campus Life' },
-  { src: '/images/_41630_ball-pool-img2.webp', alt: 'Annual Fest', caption: 'Annual Fest' },
+  { src: 'images/home/_40979_ball-pool-img1.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
+  { src: 'images/home/_57359_ball-pool-img3.webp', alt: 'Campus Life', caption: 'Campus Life' },
+  { src: 'images/home/_41630_ball-pool-img2.webp', alt: 'Annual Fest', caption: 'Annual Fest' },
 ];
 
 const principalgalleryImages = [
-  { src: '/images/16605_gal-entrepre02.webp', alt: 'Principal', caption: 'Principal' },
-  { src: '/images/25267_gal-entrepre01.webp', alt: 'Principal', caption: 'Principal' },
-  { src: '/images/36144_gal-entrepre03.webp', alt: 'Principal', caption: 'Principal' },
-  { src: '/images/46830_gal-entrepre04.webp', alt: 'Principal', caption: 'Principal' },
-  { src: '/images/16605_gal-entrepre02.webp', alt: 'Principal', caption: 'Principal' },
+  { src: 'images/home/16605_gal-entrepre02.webp', alt: 'Principal', caption: 'Principal' },
+  { src: 'images/home/25267_gal-entrepre01.webp', alt: 'Principal', caption: 'Principal' },
+  { src: 'images/home/36144_gal-entrepre03.webp', alt: 'Principal', caption: 'Principal' },
+  { src: 'images/home/46830_gal-entrepre04.webp', alt: 'Principal', caption: 'Principal' },
+  { src: 'images/home/16605_gal-entrepre02.webp', alt: 'Principal', caption: 'Principal' },
 ];
 
 const genesisgalleryImages = [
-  { src: '/images/45523_pplmeet_05.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
-  { src: '/images/21669_pplmeet_06.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
-  { src: '/images/_pplmeet_04.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
-  { src: '/images/19967_pplmeet_10.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
-  { src: '/images/14566_pplmeet_03.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
+  { src: 'images/home/45523_pplmeet_05.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
+  { src: 'images/home/21669_pplmeet_06.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
+  { src: 'images/home/_pplmeet_04.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
+  { src: 'images/home/19967_pplmeet_10.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
+  { src: 'images/home/14566_pplmeet_03.webp', alt: 'Genesis 2026', caption: 'Genesis 2026' },
 ];
 
 export default function LifeatDGU() {
@@ -149,7 +149,7 @@ export default function LifeatDGU() {
                 <SwiperSlide key={i} className="relative w-full h-full">
                   <div className="relative w-full h-full">
                     <Image
-                      src={img.src}
+                      src={process.env.NEXT_PUBLIC_IMG_PATH + img.src}
                       alt={img.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -183,7 +183,7 @@ export default function LifeatDGU() {
                 <SwiperSlide key={i} className="relative w-full h-full">
                   <div className="relative w-full h-full">
                     <Image
-                      src={img.src}
+                      src={process.env.NEXT_PUBLIC_IMG_PATH + img.src}
                       alt={img.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -217,7 +217,7 @@ export default function LifeatDGU() {
                   <SwiperSlide key={i} className="relative w-full h-full">
                     <div className="relative w-full h-full">
                       <Image
-                        src={img.src}
+                        src={process.env.NEXT_PUBLIC_IMG_PATH + img.src}
                         alt={img.alt}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
@@ -251,7 +251,7 @@ export default function LifeatDGU() {
                   <SwiperSlide key={i} className="relative w-full h-full">
                     <div className="relative w-full h-full">
                       <Image
-                        src={img.src}
+                        src={process.env.NEXT_PUBLIC_IMG_PATH + img.src}
                         alt={img.alt}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
