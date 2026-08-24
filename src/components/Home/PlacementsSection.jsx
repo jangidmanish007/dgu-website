@@ -73,6 +73,8 @@ function PlacementCard({ item }) {
         src={item.image}
         alt={item.name}
         fill
+        unoptimized
+        quality={100}
         sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 17vw"
         className="object-cover object-top grayscale transition-transform duration-500 ease-in-out"
         style={{ transform: hovered ? 'scale(1.08)' : 'scale(1)' }}

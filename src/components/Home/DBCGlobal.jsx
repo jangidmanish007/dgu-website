@@ -19,7 +19,7 @@ const stagger = {
 // Continuous left-to-right scroll with mouse + touch drag
 // =========================================================
 
-function useInfiniteMarquee({ speed = 40, items }) {
+function useInfiniteMarquee({ speed = 40, items, direction = 'ltr' }) {
   const trackRef = useRef(null);
   const animFrameRef = useRef(null);
   const offsetRef = useRef(0);
@@ -55,8 +55,9 @@ function useInfiniteMarquee({ speed = 40, items }) {
 
   const animate = useCallback(() => {
     if (!isDragging.current && !isPausedRef.current) {
-      // right direction: offset decreases (items move left → right visually)
-      offsetRef.current -= speed / 60;
+      // 'ltr' = items move right-to-left (offset increases)
+      // 'rtl' = items move left-to-right (offset decreases)
+      offsetRef.current += direction === 'rtl' ? -(speed / 60) : speed / 60;
     } else if (!isDragging.current && isPausedRef.current) {
       // momentum glide after drag release
       if (Math.abs(velocityRef.current) > 0.1) {
@@ -66,7 +67,7 @@ function useInfiniteMarquee({ speed = 40, items }) {
     }
     applyTransform();
     animFrameRef.current = requestAnimationFrame(animate);
-  }, [speed, applyTransform]);
+  }, [speed, direction, applyTransform]);
 
   useEffect(() => {
     animFrameRef.current = requestAnimationFrame(animate);
@@ -177,8 +178,17 @@ function useInfiniteMarquee({ speed = 40, items }) {
 // DRAGGABLE MARQUEE COMPONENT
 // =========================================================
 
-function DraggableMarquee({ items, speed = 40 }) {
-  const { trackRef, clonedItems, handlers } = useInfiniteMarquee({ speed, items });
+function DraggableMarquee({ items, speed = 40, mobileDirection, desktopDirection = 'ltr' }) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const direction = isMobile ? (mobileDirection ?? desktopDirection) : desktopDirection;
+  const { trackRef, clonedItems, handlers } = useInfiniteMarquee({ speed, items, direction });
 
   const marqueeMaskStyle = {
     WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',
@@ -314,7 +324,7 @@ export default function DBCGlobal() {
               </h3>
 
               <div className="pt-4 lg:pt-6">
-                <DraggableMarquee items={careerData} speed={40} />
+                <DraggableMarquee items={careerData} speed={40} desktopDirection="rtl" mobileDirection="rtl" />
               </div>
             </div>
           </motion.div>
@@ -338,7 +348,7 @@ export default function DBCGlobal() {
               </h3>
 
               <div className="pt-4 lg:pt-6">
-                <DraggableMarquee items={startupData} speed={45} />
+                <DraggableMarquee items={startupData} speed={45} desktopDirection="rtl" mobileDirection="ltr" />
               </div>
             </div>
           </motion.div>
