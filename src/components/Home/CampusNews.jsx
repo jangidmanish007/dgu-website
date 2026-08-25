@@ -288,7 +288,7 @@ function CampusCard({ item }) {
       className="group flex lg:min-h-[480px] min-h-[450px] w-full flex-col rounded-xl shadow-[0_8px_25px_rgba(0,0,0,.05)] border border-[#b4aeae] overflow-hidden bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
     >
       {/* image wrapper — clips the scale overflow */}
-      <div className="relative w-full aspect-[4/4] min-h-[220px] max-h-[220px] sm:max-h-[250px] sm:min-h-[250px] overflow-hidden">
+      <div className="relative w-full aspect-[4/4] min-h-[230px] max-h-[230px] sm:max-h-[250px] sm:min-h-[250px] overflow-hidden">
         <Image
           src={process.env.NEXT_PUBLIC_IMG_PATH + item.image}
           alt={item.title}
