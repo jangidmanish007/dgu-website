@@ -199,10 +199,9 @@ function MobileCard({ card, index }) {
 export default function DGUDifferenceSection() {
   return (
     <section
-      className="relative w-full py-12 md:py-16 overflow-hidden"
+      className="relative w-full py-12 md:py-16 overflow-hidden lg:bg-fixed"
       style={{
         backgroundImage: "url('/images/home/dgu-dffrence-bg-img.webp')",
-        backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
