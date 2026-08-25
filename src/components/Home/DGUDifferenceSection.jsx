@@ -228,21 +228,29 @@ export default function DGUDifferenceSection() {
               tallest card height, giving equal heights automatically.
             • Pagination dots built-in from Swiper.
         ═════════════════════════════════════════════════════════════ */}
-        <div className="lg:hidden diff-mobile-swiper">
+        {/*
+          overflow-hidden is removed from the wrapper so the right-peek card
+          is visible, but we clip the left edge with a negative margin trick.
+          Instead, we rely on Swiper's built-in clipping on the left and let
+          the right side bleed out naturally.
+        */}
+        <div className="lg:hidden diff-mobile-swiper pl-3">
           <Swiper
             modules={[Autoplay, Pagination]}
-            slidesPerView={1.15}
-            spaceBetween={14}
-            centeredSlides={true}
+            slidesPerView={1.12}
+            spaceBetween={12}
+            centeredSlides={false}
             loop={true}
             autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
             pagination={{ clickable: true }}
+            slidesOffsetBefore={0}
+            slidesOffsetAfter={0}
             breakpoints={{
-              480: { slidesPerView: 1.6, spaceBetween: 16 },
-              640: { slidesPerView: 2.1, spaceBetween: 16 },
-              768: { slidesPerView: 2.6, spaceBetween: 18 },
+              440: { slidesPerView: 1.4, spaceBetween: 18 },
+              520: { slidesPerView: 1.5, spaceBetween: 18 },
+              640: { slidesPerView: 1.28, spaceBetween: 16 },
+              768: { slidesPerView: 1.35, spaceBetween: 18 },
             }}
-            /* height: auto makes the swiper wrapper height = tallest visible slide */
             style={{ height: 'auto', paddingBottom: '40px' }}
           >
             {allCards.map((card, index) => (
