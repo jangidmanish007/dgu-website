@@ -139,7 +139,7 @@ function MegaMenu({ schools, isOpen }) {
           </div>
 
           {/* Middle – schools list */}
-          <div className="xl:max-w-[400px] max-w-[300px] w-full shrink-0 max-h-[400px] overflow-auto">
+          <div className="xl:max-w-[400px] max-w-[300px] w-full shrink-0 overflow-auto  max-h-[400px] nav-dropdown-scroll">
             {schools.map((school) => {
               const isActive = activeSchool.id === school.id;
               return (
@@ -163,7 +163,7 @@ function MegaMenu({ schools, isOpen }) {
           {/* Right – programs for active school */}
           <div className="flex-1 px-2 py-6 w-full max-w-[400px]">
             <p className="text-[11px] text-gray-400 uppercase tracking-widest mb-4">Programs Offered</p>
-            <div className="grid grid-cols-1 gap-1 max-h-[400px] overflow-auto">
+            <div className="grid grid-cols-1 gap-1 overflow-auto  max-h-[350px] nav-dropdown-scroll">
               {activeSchool.programs.map((prog) => (
                 <Link
                   key={prog.label}
