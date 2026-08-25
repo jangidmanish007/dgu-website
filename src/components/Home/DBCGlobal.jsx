@@ -209,12 +209,12 @@ function DraggableMarquee({ items, speed = 40, mobileDirection, desktopDirection
         {clonedItems.map((item, index) => (
           <div
             key={index}
-            className="dbc-marquee-card mx-3 flex shrink-0 flex-col justify-between overflow-hidden rounded-2xl bg-white"
+            className="dbc-marquee-card sm:mx-3 mx-2 flex shrink-0 flex-col justify-between overflow-hidden rounded-2xl bg-white"
             style={{ height: undefined }}
           >
             <img
               src={process.env.NEXT_PUBLIC_IMG_PATH + item.image}
-              className="h-[340px] w-[280px] lg:h-[390px] lg:w-[300px] rounded-2xl object-cover pointer-events-none"
+              className="h-[250px] w-[260px] sm:h-[390px] sm:w-[300px] rounded-2xl object-cover pointer-events-none"
               alt={`card-${index}`}
               draggable={false}
             />
@@ -310,7 +310,7 @@ export default function DBCGlobal() {
           <motion.div
             variants={fadeUp}
             style={cardGradientStyle}
-            className="flex min-h-[520px] flex-col justify-between overflow-hidden rounded-2xl py-[64px] lg:py-[88px]"
+            className="flex md:min-h-[520px] flex-col justify-between overflow-hidden rounded-2xl py-[44px] md:py-[88px]"
           >
             <div>
               {/* Small Heading */}
@@ -319,11 +319,11 @@ export default function DBCGlobal() {
                 DBS Global University
               </p>
 
-              <h3 className="mb-6 text-center text-[20px] lg:text-[26px] font-[700] text-[#131d3b]">
+              <h3 className="md:mb-6 mb-3 text-center text-[20px] lg:text-[26px] font-[700] text-[#131d3b]">
                 Career Success in Higher Education
               </h3>
 
-              <div className="pt-4 lg:pt-6">
+              <div className="pt-3 md:pt-6">
                 <DraggableMarquee items={careerData} speed={40} desktopDirection="rtl" mobileDirection="rtl" />
               </div>
             </div>
@@ -332,31 +332,31 @@ export default function DBCGlobal() {
           <motion.div
             variants={fadeUp}
             style={cardGradientStyle}
-            className="flex min-h-[520px] flex-col justify-between overflow-hidden rounded-2xl py-[64px] lg:py-[88px]"
+            className="flex md:min-h-[520px] flex-col justify-between overflow-hidden rounded-2xl py-[44px] md:py-[88px]"
           >
-            <div>
+            <div className="px-4">
               {/* Small Heading */}
+              <div>
+                <p className="mb-1 text-center text-xs font-medium tracking-widest text-[#2a1430]">
+                  DBS Global University
+                </p>
 
-              <p className="mb-1 text-center text-xs font-medium tracking-widest text-[#2a1430]">
-                DBS Global University
-              </p>
+                {/* Main Heading */}
 
-              {/* Main Heading */}
-
-              <h3 className="mb-6 text-center text-[20px] lg:text-[26px] font-[700] text-[#131d3b]">
-                Startup & Entrepreneurial Success
-              </h3>
-
-              <div className="pt-4 lg:pt-6">
-                <DraggableMarquee items={startupData} speed={45} desktopDirection="rtl" mobileDirection="ltr" />
+                <h3 className="md:mb-6 mb-3 text-center text-[20px] lg:text-[26px] font-[700] text-[#131d3b]">
+                  Startup & Entrepreneurial Success
+                </h3>
               </div>
+            </div>
+            <div className="pt-3 md:pt-6">
+              <DraggableMarquee items={startupData} speed={45} desktopDirection="rtl" mobileDirection="ltr" />
             </div>
           </motion.div>
 
           <motion.div
             variants={fadeUp}
             style={cardGradientStyle}
-            className="flex min-h-[520px] flex-col rounded-2xl p-6 pt-[64px] lg:pt-[88px] lg:pb-6 pb-[64px]"
+            className="flex md:min-h-[520px] flex-col rounded-2xl p-6 pt-[44px] lg:pt-[88px] lg:pb-6 pb-[44px]"
           >
             <div>
               {/* Small Heading */}
@@ -367,7 +367,7 @@ export default function DBCGlobal() {
 
               {/* Main Heading */}
 
-              <h3 className="mb-10 text-center text-[20px] lg:text-[26px] font-[700] text-[#131d3b]">
+              <h3 className="md:mb-10 mb-6 text-center text-[20px] lg:text-[26px] font-[700] text-[#131d3b]">
                 Placement Success Videos
               </h3>
 
