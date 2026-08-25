@@ -359,7 +359,7 @@ export default function PlacementUpdatesSection() {
               640: { slidesPerView: 2.1 },
               768: { slidesPerView: 2.4 },
               900: { slidesPerView: 2.8 },
-              1024: { slidesPerView: 3 },
+              1024: { slidesPerView: 3, spaceBetween: 20 },
             }}
             style={{ alignItems: 'stretch', padding: '8px' }}
           >
