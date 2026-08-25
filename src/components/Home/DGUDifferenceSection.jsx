@@ -234,7 +234,7 @@ export default function DGUDifferenceSection() {
           Instead, we rely on Swiper's built-in clipping on the left and let
           the right side bleed out naturally.
         */}
-        <div className="lg:hidden diff-mobile-swiper pl-3">
+        <div className="lg:hidden diff-mobile-swiper pl-3 sm:pr-3">
           <Swiper
             modules={[Autoplay, Pagination]}
             slidesPerView={1.12}
@@ -247,9 +247,9 @@ export default function DGUDifferenceSection() {
             slidesOffsetAfter={0}
             breakpoints={{
               440: { slidesPerView: 1.4, spaceBetween: 18 },
-              520: { slidesPerView: 1.5, spaceBetween: 18 },
-              640: { slidesPerView: 1.28, spaceBetween: 16 },
-              768: { slidesPerView: 1.35, spaceBetween: 18 },
+              520: { slidesPerView: 1.6, spaceBetween: 18 },
+              640: { slidesPerView: 2.5, spaceBetween: 16 },
+              768: { slidesPerView: 3, spaceBetween: 18 },
             }}
             style={{ height: 'auto', paddingBottom: '40px' }}
           >
