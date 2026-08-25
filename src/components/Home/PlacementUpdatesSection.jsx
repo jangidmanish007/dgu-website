@@ -354,8 +354,8 @@ export default function PlacementUpdatesSection() {
             }}
             spaceBetween={20}
             breakpoints={{
-              0: { slidesPerView: 1.1 },
-              480: { slidesPerView: 1.5 },
+              0: { slidesPerView: 1.1, spaceBetween: 12 },
+              480: { slidesPerView: 1.5, spaceBetween: 12 },
               640: { slidesPerView: 2.1 },
               768: { slidesPerView: 2.4 },
               900: { slidesPerView: 2.8 },
