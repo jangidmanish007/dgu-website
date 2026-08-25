@@ -54,13 +54,13 @@ function RecruiterLogo({ recruiter, compact = false }) {
         >
           {compact ? (
             /* ── Mobile card pill ── */
-            <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-md border border-[#e8d5f0] px-3 py-2 w-[110px] h-[68px] transition-transform duration-200 active:scale-95">
-              <div className="relative w-[108px] h-[64px]">
+            <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-md border border-[#e8d5f0] px-3 py-2 w-[130px] h-[64px] transition-transform duration-200 active:scale-95">
+              <div className="relative w-[118px] h-[84px]">
                 <Image
                   src={process.env.NEXT_PUBLIC_IMG_PATH + recruiter.src}
                   alt={recruiter.name}
                   fill
-                  sizes="86px"
+                  sizes="186px"
                   className="object-contain"
                 />
               </div>
@@ -101,7 +101,7 @@ export default function TopRecruitersSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.6 }}
         >
-          <h2 className="text-[25px] font-bold text-[#131d3b] tracking-wide">Top Recruiters 2025-26</h2>
+          <h2 className="text-[24px] lg:text-[25px] font-bold text-[#131d3b] tracking-wide">Top Recruiters 2025-26</h2>
           <div className="mt-2 mx-auto w-10 h-[3px] bg-[#68176b] rounded-full" />
         </motion.div>
 
@@ -137,9 +137,7 @@ export default function TopRecruitersSection() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-[20px] font-extrabold text-white leading-tight tracking-wide">
-              Top Recruiters 2025 – 26
-            </h2>
+            <h2 className="text-[20px] font-bold text-white leading-tight tracking-wide">Top Recruiters 2025 – 26</h2>
             <div className="mt-2 mx-auto w-10 h-[3px] bg-white rounded-full" />
           </motion.div>
 

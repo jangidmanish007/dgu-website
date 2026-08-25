@@ -365,7 +365,7 @@ export default function CampusNews() {
             {/* heading + arrows row */}
             <div className="flex items-end justify-between mb-5 sm:mb-10">
               <div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Campus News</h2>
+                <h2 className="text-[24px] sm:text-[28px] font-bold text-gray-900 mb-3">Campus News</h2>
                 <p className="text-sm text-gray-500 mt-0.5">Discover vibrant life &amp; events</p>
                 <SectionAccent />
               </div>
@@ -410,7 +410,7 @@ export default function CampusNews() {
           >
             {/* heading */}
             <div className="mb-5 sm:mb-10">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Admission News</h2>
+              <h2 className="text-[24px] sm:text-[28px] font-bold text-gray-900 mb-3">Admission News</h2>
               <p className="text-sm text-[#333] mt-0.5">Important updates &amp; deadlines</p>
               <SectionAccent />
             </div>

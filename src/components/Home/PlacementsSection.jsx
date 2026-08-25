@@ -128,7 +128,7 @@ export default function PlacementsSection() {
         >
           {/* Left */}
           <div className="md:w-56 shrink-0">
-            <h2 className="text-[26px] font-bold text-[#131d3b] mb-3">Placements</h2>
+            <h2 className="text-[24px] lg:text-[28px] font-bold text-[#131d3b] mb-3">Placements</h2>
             <p className="text-[15px] font-semibold tracking-wider text-[#333] uppercase leading-snug">
               Enjoy everyday while
               <br className="mt-2" />
@@ -160,7 +160,7 @@ export default function PlacementsSection() {
         >
           {/* Top label + heading */}
           <div className="mb-4">
-            <h2 className="text-[28px] font-extrabold text-[#131d3b] leading-tight mb-1">Placements</h2>
+            <h2 className="text-[24px] lg:text-[28px] font-bold text-[#131d3b] leading-tight mb-1">Placements</h2>
             <p className="text-[13px] font-semibold tracking-widest text-[#555] uppercase">
               Enjoy everyday while ensuring great career
             </p>

@@ -216,7 +216,7 @@ export default function DGUDifferenceSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.6 }}
         >
-          <h2 className="text-2xl sm:text-[28px] font-bold text-white">
+          <h2 className="text-[24px] sm:text-[28px] font-bold text-white">
             What makes <span className="text-[#f5c518] ">DGU Different ?</span>
           </h2>
         </motion.div>
