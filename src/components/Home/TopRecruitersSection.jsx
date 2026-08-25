@@ -61,6 +61,8 @@ function RecruiterLogo({ recruiter, compact = false }) {
                   alt={recruiter.name}
                   fill
                   sizes="186px"
+                  quality={100}
+                  unoptimized
                   className="object-contain"
                 />
               </div>
@@ -73,6 +75,8 @@ function RecruiterLogo({ recruiter, compact = false }) {
                 alt={recruiter.name}
                 fill
                 sizes="140px"
+                quality={100}
+                unoptimized
                 className="object-contain"
               />
             </div>
