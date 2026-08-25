@@ -420,31 +420,10 @@ export default function Footer() {
             {/* Col 2 — Quick Links */}
             <div className="flex-1 min-w-0">
               {/* Desktop heading */}
-              <p className="hidden lg:block text-[18px] font-normal uppercase tracking-widest text-white mb-5">
-                Quick Links
-              </p>
-
-              {/* Mobile/Tablet: collapsible */}
-              <div className="lg:hidden">
-                <CollapsibleSection title="Quick Links">
-                  <ul className="space-y-2.5 pt-1 pb-3">
-                    {quickLinks.map((link) => (
-                      <li key={link.label}>
-                        <Link
-                          href={link.href}
-                          className="flex items-center gap-2 text-[14px] text-white hover:text-white/80 transition-colors group"
-                        >
-                          <span className="text-white/40 group-hover:text-white/70 transition-colors">—</span>
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </CollapsibleSection>
-              </div>
+              <p className="block text-[18px] font-normal uppercase tracking-widest text-white mb-5">Quick Links</p>
 
               {/* Desktop list */}
-              <ul className="hidden lg:block space-y-3">
+              <ul className="block space-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.label}>
                     <Link
@@ -461,17 +440,8 @@ export default function Footer() {
 
             {/* Col 3 — Quick Contact Form */}
             <div className="w-full md:w-[340px] lg:w-[380px] xl:w-[404px] shrink-0">
-              {/* Mobile/Tablet: collapsible wrapper */}
-              <div className="lg:hidden">
-                <CollapsibleSection title="Quick Contact">
-                  <div className="pt-1 pb-3">
-                    <QuickContactForm hideHeading />
-                  </div>
-                </CollapsibleSection>
-              </div>
-
               {/* Desktop: always shown */}
-              <div className="hidden lg:block">
+              <div className="block">
                 <QuickContactForm />
               </div>
             </div>
@@ -512,7 +482,7 @@ export default function Footer() {
         aria-label="Scroll to top"
         style={{ backgroundColor: '#390c46' }}
         className={[
-          'fixed bottom-6 sm:bottom-8 cursor-pointer right-4 sm:right-6 z-50 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-sm shadow-lg',
+          'fixed bottom-14 sm:bottom-8 cursor-pointer right-4 sm:right-6 z-50 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-sm shadow-lg',
           visible ? 'animate-subtle-bounce' : '',
           'transition-all duration-500',
           visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-6 pointer-events-none',
