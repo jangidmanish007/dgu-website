@@ -338,8 +338,7 @@ export default function PlacementUpdatesSection() {
         </motion.div>
 
         <motion.div
-          className="overflow-hidden"
-          style={{ margin: '-8px' }}
+          className="overflow-hidden sm:-mx-[8px] -ml-[8px] -mr-[16px]"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"

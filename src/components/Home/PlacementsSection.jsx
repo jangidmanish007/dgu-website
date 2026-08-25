@@ -255,6 +255,7 @@ export default function PlacementsSection() {
           </div>
 
           <Swiper
+            style={{ marginRight: '-16px' }}
             modules={[Navigation, Autoplay, Pagination]}
             loop={true}
             autoplay={{ delay: 2800, disableOnInteraction: false, pauseOnMouseEnter: true }}
