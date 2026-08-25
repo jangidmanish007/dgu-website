@@ -310,7 +310,7 @@ export default function DBCGlobal() {
           <motion.div
             variants={fadeUp}
             style={cardGradientStyle}
-            className="flex md:min-h-[520px] flex-col justify-between overflow-hidden rounded-2xl py-[44px] md:py-[88px]"
+            className="flex md:min-h-[520px] flex-col overflow-hidden rounded-2xl py-[44px] md:py-[88px]"
           >
             <div>
               {/* Small Heading */}
@@ -332,7 +332,7 @@ export default function DBCGlobal() {
           <motion.div
             variants={fadeUp}
             style={cardGradientStyle}
-            className="flex md:min-h-[520px] flex-col justify-between overflow-hidden rounded-2xl py-[44px] md:py-[88px]"
+            className="flex md:min-h-[520px] flex-col overflow-hidden rounded-2xl py-[44px] md:py-[88px]"
           >
             <div className="px-4">
               {/* Small Heading */}
