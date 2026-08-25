@@ -421,3 +421,26 @@
 .georgia-fonts {
   font-family: Georgia, serif;
 }
+
+/* ── Hide scrollbar for horizontal snap carousels ───────────────────────── */
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+}
+
+/* ── DGU Difference Section — mobile Swiper pagination dots ─────────────── */
+.diff-mobile-swiper .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+}
+.diff-mobile-swiper .swiper-pagination-bullet-active {
+  width: 20px;
+  height: 6px;
+  border-radius: 3px;
+  background: #e01e79;
+}

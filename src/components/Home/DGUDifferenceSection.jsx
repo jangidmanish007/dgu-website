@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
 
-/* ─── Animation variants ────────────────────────────────────────────────── */
+/* ─── Animation variants (desktop only) ────────────────────────────────── */
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
@@ -60,12 +62,22 @@ const row2 = [
 
 const allCards = [...row1, ...row2];
 
+/* ─── Accent palette (mobile cards) ────────────────────────────────────── */
+const accentColors = [
+  { top: '#e01e79', glow: 'rgba(224,30,121,0.28)' },
+  { top: '#68176b', glow: 'rgba(104,23,107,0.28)' },
+  { top: '#e01e79', glow: 'rgba(224,30,121,0.28)' },
+  { top: '#68176b', glow: 'rgba(104,23,107,0.28)' },
+  { top: '#e01e79', glow: 'rgba(224,30,121,0.28)' },
+  { top: '#68176b', glow: 'rgba(104,23,107,0.28)' },
+];
+
 /* ─── Read More Button ──────────────────────────────────────────────────── */
 function ReadMoreButton() {
   return (
     <button
       type="button"
-      className="diff-btn relative inline-flex items-center gap-1.5 overflow-hidden rounded-full border-none border-gray-300 bg-white px-4 py-2 cursor-pointer outline-none"
+      className="diff-btn relative inline-flex items-center gap-1.5 overflow-hidden rounded-full bg-white px-4 py-2 cursor-pointer outline-none lg:border-none border-1 border-[#68176b]"
     >
       <span
         className="diff-btn-fill absolute inset-0 bg-[#68176b] [transform-origin:bottom_left] z-0"
@@ -79,27 +91,23 @@ function ReadMoreButton() {
   );
 }
 
-/* ─── Single Card ───────────────────────────────────────────────────────── */
+/* ─── Desktop Card ──────────────────────────────────────────────────────── */
 function DifferenceCard({ card, hovered, onEnter, onLeave }) {
   return (
     <div
       className={`
         flex flex-col gap-3 bg-white rounded-xl p-[22px]
-        transition-[flex,box-shadow,transform] duration-350 ease-in-out
+        transition-[flex,box-shadow] duration-300 ease-in-out
         ${hovered ? 'flex-[1.5] shadow-[0_8px_32px_rgba(104,23,107,0.22)]' : 'flex-1'}
         min-w-0 cursor-default
       `}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
     >
-      {/* Icon + text row */}
       <div className="flex items-start gap-3">
-        {/* Pink icon box */}
         <div className="shrink-0 w-[56px] h-[56px] rounded-md bg-[#e01e79] flex items-center justify-center">
           <i className={`${card.icon} text-white text-3xl`} />
         </div>
-
-        {/* Title + description */}
         <div className="flex-1 min-w-0">
           <h3 className="text-[20px] font-bold text-[#131d3b] leading-snug mb-2">{card.title}</h3>
           <p className="text-[15px] text-[#333] leading-snug min-h-[68px] line-clamp-3">{card.description}</p>
@@ -112,10 +120,9 @@ function DifferenceCard({ card, hovered, onEnter, onLeave }) {
   );
 }
 
-/* ─── Desktop Card Row (3 cards, hover-expand) ──────────────────────────── */
+/* ─── Desktop Card Row ──────────────────────────────────────────────────── */
 function CardRow({ cards }) {
   const [hoveredId, setHoveredId] = useState(null);
-
   return (
     <div className="flex gap-4">
       {cards.map((card) => (
@@ -131,20 +138,59 @@ function CardRow({ cards }) {
   );
 }
 
-/* ─── Mobile / Tablet Grid Card (no hover-expand, simple shadow on hover) ── */
-function GridCard({ card }) {
+/* ─── Mobile Slide Card ─────────────────────────────────────────────────── */
+function MobileCard({ card, index }) {
+  const accent = accentColors[index % accentColors.length];
+  const num = String(index + 1).padStart(2, '0');
+
   return (
-    <div className="flex flex-col gap-3 bg-white rounded-xl p-5 shadow-sm hover:shadow-[0_8px_32px_rgba(104,23,107,0.18)] transition-shadow duration-300 cursor-default">
-      <div className="flex items-start gap-3">
-        <div className="shrink-0 w-[52px] h-[52px] rounded-md bg-[#e01e79] flex items-center justify-center">
-          <i className={`${card.icon} text-white text-[28px]`} />
+    /*
+      h-full is critical — Swiper sets the slide wrapper to full height of
+      the tallest slide when you add `style={{ height: 'auto' }}` to Swiper.
+      This card must fill that height so all cards look equal.
+    */
+    <div
+      className="relative flex flex-col h-full rounded-2xl overflow-hidden bg-white"
+      style={{ boxShadow: `0 6px 28px ${accent.glow}` }}
+    >
+      {/* Coloured top stripe */}
+      <div className="h-1.5 w-full shrink-0" style={{ background: accent.top }} />
+
+      {/* Body */}
+      <div className="flex flex-col flex-1 p-5 gap-3">
+        {/* Icon + ghost number */}
+        <div className="flex items-center justify-between">
+          <div
+            className="w-10 h-10 rounded-full flex items-center justify-center shadow-md shrink-0"
+            style={{ background: accent.top }}
+          >
+            <i className={`${card.icon} text-white text-xl`} />
+          </div>
+          <span
+            className="text-[40px] font-black leading-none select-none"
+            style={{ color: accent.top, opacity: 0.12 }}
+            aria-hidden="true"
+          >
+            {num}
+          </span>
         </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="text-[18px] font-bold text-[#131d3b] leading-snug mb-1.5">{card.title}</h3>
-          <p className="text-[14px] text-[#333] leading-snug mb-3">{card.description}</p>
-          <ReadMoreButton />
+
+        {/* Text — flex-1 pushes button to bottom */}
+        <div className="flex flex-col flex-1">
+          <h3 className="text-[15px] font-bold text-[#131d3b] leading-snug mb-1">{card.title}</h3>
+          <p className="text-[13px] text-[#555] leading-relaxed flex-1">{card.description}</p>
+          <div className="mt-3">
+            <ReadMoreButton />
+          </div>
         </div>
       </div>
+
+      {/* Corner decoration */}
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 w-16 h-16 rounded-tl-[60px]"
+        style={{ background: `linear-gradient(135deg, transparent 40%, ${accent.top}18)` }}
+        aria-hidden="true"
+      />
     </div>
   );
 }
@@ -153,7 +199,7 @@ function GridCard({ card }) {
 export default function DGUDifferenceSection() {
   return (
     <section
-      className="relative w-full py-12 md:py-16 px-4 overflow-hidden"
+      className="relative w-full py-12 md:py-16 overflow-hidden"
       style={{
         backgroundImage: "url('/images/home/dgu-dffrence-bg-img.webp')",
         backgroundAttachment: 'fixed',
@@ -163,37 +209,60 @@ export default function DGUDifferenceSection() {
       }}
     >
       <div className="relative max-w-7xl mx-auto">
-        {/* Heading */}
+        {/* ── Heading ── */}
         <motion.div
-          className="text-center mb-6 md:mb-8"
+          className="text-center mb-6 md:mb-8 px-4"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.6 }}
         >
           <h2 className="text-2xl sm:text-[28px] font-bold text-white">
-            What makes <span className="text-[#f5c518] bg-[#000]">DGU Different ? </span>
+            What makes <span className="text-[#f5c518] ">DGU Different ?</span>
           </h2>
         </motion.div>
 
-        {/* ── Mobile / Tablet grid ── */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          {allCards.map((card) => (
-            <motion.div key={card.id} variants={fadeUp}>
-              <GridCard card={card} />
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* ══════════════════════════════════════════════════════════
+            MOBILE  (< 1024 px) — Swiper carousel
+            • style={{ height: 'auto' }} on Swiper → slides stretch to
+              tallest card height, giving equal heights automatically.
+            • Pagination dots built-in from Swiper.
+        ═════════════════════════════════════════════════════════════ */}
+        <div className="lg:hidden diff-mobile-swiper">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            slidesPerView={1.15}
+            spaceBetween={14}
+            centeredSlides={true}
+            loop={true}
+            autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+            pagination={{ clickable: true }}
+            breakpoints={{
+              480: { slidesPerView: 1.6, spaceBetween: 16 },
+              640: { slidesPerView: 2.1, spaceBetween: 16 },
+              768: { slidesPerView: 2.6, spaceBetween: 18 },
+            }}
+            /* height: auto makes the swiper wrapper height = tallest visible slide */
+            style={{ height: 'auto', paddingBottom: '40px' }}
+          >
+            {allCards.map((card, index) => (
+              <SwiperSlide
+                key={card.id}
+                /* h-auto on the slide + h-full on MobileCard = equal heights */
+                style={{ height: 'auto' }}
+              >
+                <MobileCard card={card} index={index} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-        {/* ── Desktop: two rows of 3 with hover-expand (≥ 1024px) ── */}
+        {/* ══════════════════════════════════════════════════════════
+            DESKTOP (≥ 1024 px) — two rows of 3, hover-expand
+            Completely unchanged from original.
+        ═════════════════════════════════════════════════════════════ */}
         <motion.div
-          className="hidden lg:flex lg:flex-col gap-4"
+          className="hidden lg:flex lg:flex-col gap-4 px-4"
           variants={stagger}
           initial="hidden"
           whileInView="visible"

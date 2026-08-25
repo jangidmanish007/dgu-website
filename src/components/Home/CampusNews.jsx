@@ -285,10 +285,10 @@ function CampusCard({ item }) {
   return (
     <Link
       href={item.href}
-      className="group flex lg:min-h-[480px] min-h-[430px] w-full flex-col rounded-xl shadow-[0_8px_25px_rgba(0,0,0,.05)] border border-[#b4aeae] overflow-hidden bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
+      className="group flex lg:min-h-[480px] min-h-[450px] w-full flex-col rounded-xl shadow-[0_8px_25px_rgba(0,0,0,.05)] border border-[#b4aeae] overflow-hidden bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
     >
       {/* image wrapper — clips the scale overflow */}
-      <div className="relative w-full aspect-[4/4] min-h-[200px] max-h-[200px] sm:max-h-[250px] sm:min-h-[250px] overflow-hidden">
+      <div className="relative w-full aspect-[4/4] min-h-[220px] max-h-[220px] sm:max-h-[250px] sm:min-h-[250px] overflow-hidden">
         <Image
           src={process.env.NEXT_PUBLIC_IMG_PATH + item.image}
           alt={item.title}
@@ -351,7 +351,7 @@ export default function CampusNews() {
   const nextRef = useRef(null);
 
   return (
-    <section className="pb-10 sm:pb-14 pt-4 md:pb-16 bg-white border-t border-gray-100 overflow-hidden">
+    <section className="pb-10 sm:pb-14 pt-10 lg:pt-4 md:pb-16 bg-white border-t border-gray-100 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px] gap-8 lg:gap-10">
           {/* ── LEFT: Campus News carousel ─────────────────────────────── */}
