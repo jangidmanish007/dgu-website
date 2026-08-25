@@ -339,10 +339,10 @@ function SchoolRow({ school, isOpen, onToggle, isMobile }) {
           )}
         >
           <div className="flex flex-col min-w-0">
-            <span className="text-[11px] text-[#000] leading-tight">{school.label}</span>
+            <span className="text-[10px] lg:text-[11px] text-[#000] leading-tight">{school.label}</span>
             <span
               className={cn(
-                'text-[1.25rem] font-medium leading-snug transition-colors duration-200',
+                'text-[16px] lg:text-[1.25rem] font-medium leading-snug transition-colors duration-200',
                 open ? 'text-[#68176b]' : 'text-[#222]',
               )}
             >
@@ -489,7 +489,7 @@ function QuickContactForm() {
           <input
             type="text"
             placeholder="Enter Captcha"
-            className="flex-1 bg-white border border-white/30 text-gray-800 placeholder:text-gray-400 text-sm px-3 py-1 focus:outline-none focus:ring-1 focus:ring-white/60 rounded-none"
+            className="flex-1 bg-white w-full border border-white/30 text-gray-800 placeholder:text-gray-400 text-sm px-3 py-1 focus:outline-none focus:ring-1 focus:ring-white/60 rounded-none"
           />
         </div>
 
@@ -580,7 +580,7 @@ export default function SchoolsSection() {
             viewport={{ once: true, amount: 0.15 }}
           >
             {/* Left column */}
-            <div className="flex flex-col gap-y-6 lg:gap-y-12">
+            <div className="flex flex-col gap-y-3 lg:gap-y-12">
               {schools.map((school) => (
                 <motion.div key={school.id} variants={fadeUp}>
                   <SchoolRow

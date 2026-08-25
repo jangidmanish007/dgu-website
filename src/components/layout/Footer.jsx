@@ -187,7 +187,7 @@ function QuickContactForm({ hideHeading = false }) {
           <input
             type="text"
             placeholder="Enter Captcha"
-            className="flex-1 bg-white border border-white/30 text-gray-800 placeholder:text-gray-400 text-sm px-3 py-[7px] focus:outline-none focus:ring-1 focus:ring-white/60 rounded-none"
+            className="flex-1 bg-white border w-full border-white/30 text-gray-800 placeholder:text-gray-400 text-sm px-3 py-[7px] focus:outline-none focus:ring-1 focus:ring-white/60 rounded-none"
           />
         </div>
 
@@ -288,7 +288,7 @@ export default function Footer() {
                 alt="DBS Global University"
                 width={200}
                 height={76}
-                className="h-[66px] sm:h-[76px] w-auto object-contain brightness-[10] contrast-75"
+                className="h-[66px] sm:h-[76px] w-auto object-contain "
               />
             </Link>
 
@@ -421,7 +421,9 @@ export default function Footer() {
             {/* Col 2 — Quick Links */}
             <div className="flex-1 min-w-0">
               {/* Desktop heading */}
-              <p className="block text-[18px] font-normal uppercase tracking-widest text-white mb-5">Quick Links</p>
+              <p className="block text-[16px] lg:text-[18px] font-normal uppercase tracking-widest text-white mb-5">
+                Quick Links
+              </p>
 
               {/* Desktop list */}
               <ul className="block space-y-3">
@@ -429,7 +431,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="flex items-center gap-2 text-[15px] text-white hover:text-white/80 transition-colors group"
+                      className="flex items-center gap-2 text-[13px] lg:text-[15px] text-white hover:text-white/80 transition-colors group"
                     >
                       <span className="text-white/40 group-hover:text-white/70 transition-colors">—</span>
                       {link.label}

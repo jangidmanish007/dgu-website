@@ -116,7 +116,7 @@ export default function PlacementsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="w-full pt-16 pb-10 px-4 bg-white">
+    <section className="w-full pt-16 pb-10 px-[16px] lg:px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* ── Desktop Header: heading left + description right ── */}
         <motion.div
@@ -308,8 +308,8 @@ export default function PlacementsSection() {
                   swiperRef.current?.slidePrev();
                 }}
                 aria-label="Previous placement"
-                className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200"
-                style={{ border: '2px solid #68176b', color: '#68176b', background: 'transparent' }}
+                className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200"
+                style={{ border: '1px solid #68176b', color: '#68176b', background: 'transparent' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = '#68176b';
                   e.currentTarget.style.color = '#fff';
@@ -326,8 +326,8 @@ export default function PlacementsSection() {
                   swiperRef.current?.slideNext();
                 }}
                 aria-label="Next placement"
-                className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200"
-                style={{ background: '#68176b', color: '#fff', border: '2px solid #68176b' }}
+                className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200"
+                style={{ background: '#68176b', color: '#fff', border: '1px solid #68176b' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = '#131d3b';
                   e.currentTarget.style.borderColor = '#131d3b';
