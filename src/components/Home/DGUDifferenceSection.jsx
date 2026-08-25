@@ -246,7 +246,8 @@ export default function DGUDifferenceSection() {
             slidesOffsetBefore={0}
             slidesOffsetAfter={0}
             breakpoints={{
-              440: { slidesPerView: 1.4, spaceBetween: 18 },
+              360: { slidesPerView: 1.4, spaceBetween: 18 },
+              440: { slidesPerView: 1.6, spaceBetween: 18 },
               520: { slidesPerView: 1.6, spaceBetween: 18 },
               640: { slidesPerView: 2.5, spaceBetween: 16 },
               768: { slidesPerView: 3, spaceBetween: 18 },
