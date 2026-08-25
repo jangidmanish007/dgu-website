@@ -155,7 +155,7 @@ export default function TopRecruitersSection() {
               style={{ background: 'linear-gradient(to left, #1e0a22, transparent)' }}
             />
 
-            <Marquee gradient={false} speed={38} pauseOnHover direction="left" className="overflow-hidden">
+            <Marquee gradient={false} speed={20} pauseOnHover direction="left" className="overflow-hidden">
               {rowOne.map((r) => (
                 <RecruiterLogo key={r.id} recruiter={r} compact />
               ))}
@@ -173,7 +173,7 @@ export default function TopRecruitersSection() {
               style={{ background: 'linear-gradient(to left, #2a0630, transparent)' }}
             />
 
-            <Marquee gradient={false} speed={38} pauseOnHover direction="right" className="overflow-hidden">
+            <Marquee gradient={false} speed={20} pauseOnHover direction="right" className="overflow-hidden">
               {rowTwo.map((r) => (
                 <RecruiterLogo key={r.id} recruiter={r} compact />
               ))}

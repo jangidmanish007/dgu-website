@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
@@ -319,36 +319,20 @@ export default function PlacementUpdatesSection() {
             <div className="w-10 h-[3px] bg-[#68176b] rounded-full mt-2" />
           </div>
 
-          <div className="flex items-center gap-2 shrink-0 sm:justify-end justify-center">
+          <div className="flex items-center gap-2 shrink-0 sm:justify-end justify-end">
             <button
               onClick={() => swiperRef.current?.slidePrev()}
               aria-label="Previous placement update"
               className="lg:w-12 lg:h-12 w-9 h-9 rounded-full border cursor-pointer border-[#e0e0e0] flex items-center justify-center shadow-[0_4px_15px_rgba(0,0,0,.05)] text-[#68176b] transition-all duration-200 hover:bg-[#68176b] hover:text-white"
             >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path
-                  d="M10 3L5 8L10 13"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <ChevronLeft size={16} aria-hidden="true" />
             </button>
             <button
               onClick={() => swiperRef.current?.slideNext()}
               aria-label="Next placement update"
               className="lg:w-12 lg:h-12 w-9 h-9 rounded-full border cursor-pointer border-[#e0e0e0] flex items-center shadow-[0_4px_15px_rgba(0,0,0,.05)] justify-center text-[#68176b] transition-all duration-200 hover:bg-[#68176b] hover:text-white"
             >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path
-                  d="M6 3L11 8L6 13"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <ChevronRight size={16} aria-hidden="true" />
             </button>
           </div>
         </motion.div>

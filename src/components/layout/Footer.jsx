@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ChevronUp } from 'lucide-react';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const quickLinks = [
@@ -482,24 +483,13 @@ export default function Footer() {
         aria-label="Scroll to top"
         style={{ backgroundColor: '#390c46' }}
         className={[
-          'fixed bottom-14 sm:bottom-8 cursor-pointer right-4 sm:right-6 z-50 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-sm shadow-lg',
+          'fixed bottom-16 sm:bottom-8 cursor-pointer right-4 sm:right-6 z-50 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-sm shadow-lg',
           visible ? 'animate-subtle-bounce' : '',
           'transition-all duration-500',
           visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-6 pointer-events-none',
         ].join(' ')}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-4 w-4 sm:h-5 sm:w-5"
-        >
-          <polyline points="18 15 12 9 6 15" />
-        </svg>
+        <ChevronUp className="h-4 w-4 sm:h-5 sm:w-5 text-white" aria-hidden="true" />
       </button>
     </footer>
   );

@@ -135,7 +135,7 @@ function MobileBottomBar({ visible }) {
         <Link
           href="/admission"
           aria-label="Apply Now"
-          className="group flex-1 flex items-center justify-center gap-2 py-[10px] px-4 relative overflow-hidden"
+          className="group flex-1 flex items-center justify-center gap-2 py-[14px] px-4 relative overflow-hidden"
           style={{
             background: 'linear-gradient(135deg, #ffa500 0%, #ff6b00 100%)',
             boxShadow: '0 4px 20px rgba(255,165,0,0.45)',
@@ -152,7 +152,7 @@ function MobileBottomBar({ visible }) {
         <a
           href="tel:+917259162060"
           aria-label="Contact Us"
-          className="group flex-1 flex items-center justify-center gap-2 py-[10px] px-4 relative overflow-hidden"
+          className="group flex-1 flex items-center justify-center gap-2 py-[14px] px-4 relative overflow-hidden"
           style={{
             background: 'linear-gradient(135deg, #c850c0 0%, #7b2ff7 100%)',
             boxShadow: '0 4px 20px rgba(200,80,192,0.45)',
