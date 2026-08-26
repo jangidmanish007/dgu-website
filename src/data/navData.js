@@ -1,5 +1,4 @@
-// ─── Navigation Data ──────────────────────────────────────────────────────────
-// Top utility bar links
+
 export const topBarLinks = [
   { label: 'Home', href: '/' },
   { label: 'Alumni', href: '/alumni' },
@@ -12,11 +11,6 @@ export const topBarLinks = [
   { label: 'Career', href: '/career' },
   { label: 'Contact Us', href: '/contact-us' },
 ];
-
-// ─── Main nav items ───────────────────────────────────────────────────────────
-// type: 'link'       → plain link, no dropdown
-// type: 'dropdown'   → simple multi-level dropdown (items → children)
-// type: 'mega'       → full-width mega menu (schools with programs)
 
 export const mainNavItems = [
   {

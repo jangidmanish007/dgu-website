@@ -1,7 +1,7 @@
 'use client';
-
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import DraggableMarquee from '@/components/ui/DraggableMarquee';
 
 /* ─── Animation variants ────────────────────────────────────────────────── */
 const fadeUp = {
@@ -13,217 +13,6 @@ const stagger = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.14 } },
 };
-
-// =========================================================
-// INFINITE DRAG MARQUEE HOOK
-// Continuous left-to-right scroll with mouse + touch drag
-// =========================================================
-
-function useInfiniteMarquee({ speed = 40, items, direction = 'ltr' }) {
-  const trackRef = useRef(null);
-  const animFrameRef = useRef(null);
-  const offsetRef = useRef(0);
-  const isDragging = useRef(false);
-  const dragStartX = useRef(0);
-  const dragStartOffset = useRef(0);
-  const velocityRef = useRef(0);
-  const lastDragX = useRef(0);
-  const lastDragTime = useRef(0);
-  const isPausedRef = useRef(false);
-
-  // Duplicate items enough times so we always have content visible
-  const cloneCount = 3;
-  const clonedItems = [...items, ...items, ...items];
-
-  const getTrackWidth = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return 0;
-    // width of one set of items
-    return track.scrollWidth / cloneCount;
-  }, [cloneCount]);
-
-  const applyTransform = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const singleWidth = getTrackWidth();
-    // Keep offset in [0, singleWidth) for seamless loop (handles negative values too)
-    if (singleWidth > 0) {
-      offsetRef.current = ((offsetRef.current % singleWidth) + singleWidth) % singleWidth;
-    }
-    track.style.transform = `translateX(-${offsetRef.current}px)`;
-  }, [getTrackWidth]);
-
-  const animate = useCallback(() => {
-    if (!isDragging.current && !isPausedRef.current) {
-      // 'ltr' = items move right-to-left (offset increases)
-      // 'rtl' = items move left-to-right (offset decreases)
-      offsetRef.current += direction === 'rtl' ? -(speed / 60) : speed / 60;
-    } else if (!isDragging.current && isPausedRef.current) {
-      // momentum glide after drag release
-      if (Math.abs(velocityRef.current) > 0.1) {
-        offsetRef.current += velocityRef.current;
-        velocityRef.current *= 0.95; // friction
-      }
-    }
-    applyTransform();
-    animFrameRef.current = requestAnimationFrame(animate);
-  }, [speed, direction, applyTransform]);
-
-  useEffect(() => {
-    animFrameRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-    };
-  }, [animate]);
-
-  // ---- MOUSE EVENTS ----
-  const onMouseDown = useCallback((e) => {
-    isDragging.current = true;
-    isPausedRef.current = true;
-    dragStartX.current = e.clientX;
-    dragStartOffset.current = offsetRef.current;
-    lastDragX.current = e.clientX;
-    lastDragTime.current = Date.now();
-    velocityRef.current = 0;
-    e.preventDefault();
-  }, []);
-
-  const onMouseMove = useCallback((e) => {
-    if (!isDragging.current) return;
-    const delta = dragStartX.current - e.clientX;
-    offsetRef.current = dragStartOffset.current + delta;
-
-    const now = Date.now();
-    const dt = now - lastDragTime.current;
-    if (dt > 0) {
-      velocityRef.current = ((lastDragX.current - e.clientX) / dt) * 16; // scale to ~60fps
-    }
-    lastDragX.current = e.clientX;
-    lastDragTime.current = now;
-  }, []);
-
-  const onMouseUp = useCallback(() => {
-    if (!isDragging.current) return;
-    isDragging.current = false;
-    // Let momentum carry it; isPausedRef stays true until velocity dies
-    // After momentum fades, resume auto-scroll
-    const check = () => {
-      if (Math.abs(velocityRef.current) < 0.2) {
-        isPausedRef.current = false;
-      } else {
-        requestAnimationFrame(check);
-      }
-    };
-    requestAnimationFrame(check);
-  }, []);
-
-  const onMouseLeave = useCallback(() => {
-    if (isDragging.current) onMouseUp();
-  }, [onMouseUp]);
-
-  // ---- TOUCH EVENTS ----
-  const onTouchStart = useCallback((e) => {
-    isDragging.current = true;
-    isPausedRef.current = true;
-    dragStartX.current = e.touches[0].clientX;
-    dragStartOffset.current = offsetRef.current;
-    lastDragX.current = e.touches[0].clientX;
-    lastDragTime.current = Date.now();
-    velocityRef.current = 0;
-  }, []);
-
-  const onTouchMove = useCallback((e) => {
-    if (!isDragging.current) return;
-    const tx = e.touches[0].clientX;
-    const delta = dragStartX.current - tx;
-    offsetRef.current = dragStartOffset.current + delta;
-
-    const now = Date.now();
-    const dt = now - lastDragTime.current;
-    if (dt > 0) {
-      velocityRef.current = ((lastDragX.current - tx) / dt) * 16;
-    }
-    lastDragX.current = tx;
-    lastDragTime.current = now;
-    e.preventDefault();
-  }, []);
-
-  const onTouchEnd = useCallback(() => {
-    if (!isDragging.current) return;
-    isDragging.current = false;
-    const check = () => {
-      if (Math.abs(velocityRef.current) < 0.2) {
-        isPausedRef.current = false;
-      } else {
-        requestAnimationFrame(check);
-      }
-    };
-    requestAnimationFrame(check);
-  }, []);
-
-  const handlers = {
-    onMouseDown,
-    onMouseMove,
-    onMouseUp,
-    onMouseLeave,
-    onTouchStart,
-    onTouchMove,
-    onTouchEnd,
-  };
-
-  return { trackRef, clonedItems, handlers };
-}
-
-// =========================================================
-// DRAGGABLE MARQUEE COMPONENT
-// =========================================================
-
-function DraggableMarquee({ items, speed = 40, mobileDirection, desktopDirection = 'ltr' }) {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
-  const direction = isMobile ? (mobileDirection ?? desktopDirection) : desktopDirection;
-  const { trackRef, clonedItems, handlers } = useInfiniteMarquee({ speed, items, direction });
-
-  const marqueeMaskStyle = {
-    WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',
-    maskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',
-    WebkitMaskRepeat: 'no-repeat',
-    maskRepeat: 'no-repeat',
-    WebkitMaskSize: '100% 100%',
-    maskSize: '100% 100%',
-  };
-
-  return (
-    <div
-      className="relative w-full overflow-hidden select-none cursor-grab active:cursor-grabbing"
-      style={marqueeMaskStyle}
-      {...handlers}
-    >
-      <div ref={trackRef} className="flex will-change-transform" style={{ width: 'max-content' }}>
-        {clonedItems.map((item, index) => (
-          <div
-            key={index}
-            className="dbc-marquee-card sm:mx-3 mx-2 flex shrink-0 flex-col justify-between overflow-hidden rounded-2xl bg-white"
-            style={{ height: undefined }}
-          >
-            <img
-              src={process.env.NEXT_PUBLIC_IMG_PATH + item.image}
-              className="h-[250px] w-[260px] sm:h-[390px] sm:w-[300px] rounded-2xl object-cover pointer-events-none"
-              alt={`card-${index}`}
-              draggable={false}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 // =========================================================
 // MAIN COMPONENT
@@ -324,7 +113,25 @@ export default function DBCGlobal() {
               </h3>
 
               <div className="pt-3 md:pt-6">
-                <DraggableMarquee items={careerData} speed={40} desktopDirection="rtl" mobileDirection="rtl" />
+                <DraggableMarquee
+                  items={careerData}
+                  speed={40}
+                  direction="rtl"
+                  mobileDirection="rtl"
+                  renderItem={(item, index) => (
+                    <div
+                      key={index}
+                      className="dbc-marquee-card sm:mx-3 mx-2 flex shrink-0 flex-col justify-between overflow-hidden rounded-2xl bg-white"
+                    >
+                      <img
+                        src={process.env.NEXT_PUBLIC_IMG_PATH + item.image}
+                        className="h-[250px] w-[260px] sm:h-[390px] sm:w-[300px] rounded-2xl object-cover pointer-events-none"
+                        alt={`career-${index}`}
+                        draggable={false}
+                      />
+                    </div>
+                  )}
+                />
               </div>
             </div>
           </motion.div>
@@ -349,7 +156,25 @@ export default function DBCGlobal() {
               </div>
             </div>
             <div className="pt-3 md:pt-6">
-              <DraggableMarquee items={startupData} speed={45} desktopDirection="rtl" mobileDirection="ltr" />
+              <DraggableMarquee
+                items={startupData}
+                speed={45}
+                direction="rtl"
+                mobileDirection="ltr"
+                renderItem={(item, index) => (
+                  <div
+                    key={index}
+                    className="dbc-marquee-card sm:mx-3 mx-2 flex shrink-0 flex-col justify-between overflow-hidden rounded-2xl bg-white"
+                  >
+                    <img
+                      src={process.env.NEXT_PUBLIC_IMG_PATH + item.image}
+                      className="h-[250px] w-[260px] sm:h-[390px] sm:w-[300px] rounded-2xl object-cover pointer-events-none"
+                      alt={`startup-${index}`}
+                      draggable={false}
+                    />
+                  </div>
+                )}
+              />
             </div>
           </motion.div>
 
@@ -384,7 +209,7 @@ export default function DBCGlobal() {
               <div className="mt-4 text-center">
                 <h4 className="font-bold text-[#131d3b]">{videosData[currentVideoIndex].title}</h4>
 
-                <p className="mt-1 px-2 text-xs text-gray-600">{videosData[currentVideoIndex].desc}</p>
+                <p className="mt-1 px-2 text-sm text-gray-600">{videosData[currentVideoIndex].desc}</p>
               </div>
             </div>
 

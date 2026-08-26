@@ -63,7 +63,7 @@ export default function LifeatDGU() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.6 }}
         >
-          <h2 className="text-[24px] sm:text-[28px] font-bold text-[#2a3e61]">Life @ DGU</h2>
+          <h2 className="text-[24px] sm:text-[28px] font-bold text-[#131d3b]">Life @ DGU</h2>
           <p className="mt-2 text-sm sm:text-base text-gray-500">
             A glimpse into our <span className="text-[#68176b]">vibrant campus, hostels, sports, and events.</span>
           </p>

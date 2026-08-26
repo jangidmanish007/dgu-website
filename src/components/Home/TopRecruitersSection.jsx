@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { motion } from 'framer-motion';
+import DraggableMarquee from '@/components/ui/DraggableMarquee';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -41,46 +42,23 @@ const half = Math.ceil(recruiters.length / 2);
 const rowOne = recruiters.slice(0, half);
 const rowTwo = recruiters.slice(half);
 
-/* ─── Single recruiter logo card ────────────────────────────────────────── */
-function RecruiterLogo({ recruiter, compact = false }) {
+/* ─── Desktop logo card (used inside react-fast-marquee) ───────────────── */
+function DesktopRecruiterLogo({ recruiter }) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div
-          className={`
-            flex items-center justify-center cursor-pointer select-none
-            ${compact ? 'mx-2' : 'mx-4 lg:mx-6'}
-          `}
-        >
-          {compact ? (
-            /* ── Mobile card pill ── */
-            <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-md border border-[#e8d5f0] px-3 py-2 w-[130px] h-[64px] transition-transform duration-200 active:scale-95">
-              <div className="relative w-[118px] h-[84px]">
-                <Image
-                  src={process.env.NEXT_PUBLIC_IMG_PATH + recruiter.src}
-                  alt={recruiter.name}
-                  fill
-                  sizes="186px"
-                  quality={100}
-                  unoptimized
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          ) : (
-            /* ── Desktop logo ── */
-            <div className="relative lg:w-[188px] w-[140px] h-[70px] lg:h-[90px] transition-transform duration-200 hover:scale-105">
-              <Image
-                src={process.env.NEXT_PUBLIC_IMG_PATH + recruiter.src}
-                alt={recruiter.name}
-                fill
-                sizes="140px"
-                quality={100}
-                unoptimized
-                className="object-contain"
-              />
-            </div>
-          )}
+        <div className="mx-4 lg:mx-6 flex items-center justify-center cursor-pointer select-none">
+          <div className="relative lg:w-[188px] w-[140px] h-[70px] lg:h-[90px] transition-transform duration-200 hover:scale-105">
+            <Image
+              src={process.env.NEXT_PUBLIC_IMG_PATH + recruiter.src}
+              alt={recruiter.name}
+              fill
+              sizes="188px"
+              quality={100}
+              unoptimized
+              className="object-contain"
+            />
+          </div>
         </div>
       </TooltipTrigger>
       <TooltipContent side="top" className="bg-[#68176b] text-white text-[13px] font-semibold px-3 py-1.5 rounded-md">
@@ -90,12 +68,61 @@ function RecruiterLogo({ recruiter, compact = false }) {
   );
 }
 
+/* ─── Mobile logo card (used inside DraggableMarquee via renderItem) ────── */
+function MobileRecruiterCard({ recruiter }) {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <div className="mx-2 flex items-center justify-center cursor-pointer select-none">
+          {/* card pill — same dimensions as original compact card */}
+          <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-md border border-[#e8d5f0] px-3 py-2 w-[130px] h-[64px] transition-transform duration-200 active:scale-95">
+            {/* image wrapper is intentionally taller than the pill so the logo has room */}
+            <div className="relative w-[118px] h-[84px]">
+              <Image
+                src={process.env.NEXT_PUBLIC_IMG_PATH + recruiter.src}
+                alt={recruiter.name}
+                fill
+                sizes="118px"
+                quality={100}
+                unoptimized
+                className="object-contain"
+                draggable={false}
+              />
+            </div>
+          </div>
+        </div>
+      </TooltipTrigger>
+      <TooltipContent side="top" className="bg-[#68176b] text-white text-[13px] font-semibold px-3 py-1.5 rounded-md">
+        {recruiter.name}
+      </TooltipContent>
+    </Tooltip>
+  );
+}
+
+function FadeRow({ children, leftColor, rightColor, className = '' }) {
+  return (
+    <div className={`relative ${className}`}>
+      {/* left fade */}
+      <div
+        className="pointer-events-none absolute left-0 top-0 h-full w-8 z-10"
+        style={{ background: `linear-gradient(to right, ${leftColor}, transparent)` }}
+      />
+      {/* right fade */}
+      <div
+        className="pointer-events-none absolute right-0 top-0 h-full w-8 z-10"
+        style={{ background: `linear-gradient(to left, ${rightColor}, transparent)` }}
+      />
+      {children}
+    </div>
+  );
+}
+
 /* ─── Main Section ──────────────────────────────────────────────────────── */
 export default function TopRecruitersSection() {
   return (
     <TooltipProvider>
       {/* ══════════════════════════════════════════════════════════════════
-          DESKTOP  ≥ 991 px  —  single marquee, white bg  (unchanged)
+          DESKTOP  ≥ 991 px  —  single react-fast-marquee, white bg
       ══════════════════════════════════════════════════════════════════ */}
       <section className="hidden min-[991px]:block w-full pb-10 bg-white overflow-hidden">
         <motion.div
@@ -108,16 +135,15 @@ export default function TopRecruitersSection() {
           <h2 className="text-[24px] lg:text-[25px] font-bold text-[#131d3b] tracking-wide">Top Recruiters 2025-26</h2>
           <div className="mt-2 mx-auto w-10 h-[3px] bg-[#68176b] rounded-full" />
         </motion.div>
-
         <Marquee gradient={false} speed={45} pauseOnHover className="overflow-hidden">
           {recruiters.map((r) => (
-            <RecruiterLogo key={r.id} recruiter={r} />
+            <DesktopRecruiterLogo key={r.id} recruiter={r} />
           ))}
         </Marquee>
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════
-          MOBILE  < 991 px  —  themed dual-marquee creative layout
+          MOBILE  < 991 px  —  themed dual draggable-marquee layout
       ══════════════════════════════════════════════════════════════════ */}
       <section
         className="block min-[991px]:hidden w-full overflow-hidden relative"
@@ -145,41 +171,30 @@ export default function TopRecruitersSection() {
             <div className="mt-2 mx-auto w-10 h-[3px] bg-white rounded-full" />
           </motion.div>
 
-          {/* ── Row 1: left → right ── */}
-          <div className="mb-4 relative">
-            {/* fade edges */}
-            <div
-              className="pointer-events-none absolute left-0 top-0 h-full w-8 z-10"
-              style={{ background: 'linear-gradient(to right, #1e0a22, transparent)' }}
-            />
-            <div
-              className="pointer-events-none absolute right-0 top-0 h-full w-8 z-10"
-              style={{ background: 'linear-gradient(to left, #1e0a22, transparent)' }}
-            />
-
-            <Marquee gradient={false} speed={20} pauseOnHover direction="left" className="overflow-hidden">
-              {rowOne.map((r) => (
-                <RecruiterLogo key={r.id} recruiter={r} compact />
-              ))}
-            </Marquee>
+          {/* ── Row 1: ltr ── */}
+          <div className="mb-4">
+            <FadeRow leftColor="#1e0a22" rightColor="#1e0a22">
+              <DraggableMarquee
+                items={rowOne}
+                speed={20}
+                direction="ltr"
+                maskStyle={null}
+                renderItem={(recruiter, index) => <MobileRecruiterCard key={index} recruiter={recruiter} />}
+              />
+            </FadeRow>
           </div>
 
-          {/* ── Row 2: right → left ── */}
-          <div className="relative">
-            <div
-              className="pointer-events-none absolute left-0 top-0 h-full w-8 z-10"
-              style={{ background: 'linear-gradient(to right, #2a0630, transparent)' }}
-            />
-            <div
-              className="pointer-events-none absolute right-0 top-0 h-full w-8 z-10"
-              style={{ background: 'linear-gradient(to left, #2a0630, transparent)' }}
-            />
-
-            <Marquee gradient={false} speed={20} pauseOnHover direction="right" className="overflow-hidden">
-              {rowTwo.map((r) => (
-                <RecruiterLogo key={r.id} recruiter={r} compact />
-              ))}
-            </Marquee>
+          {/* ── Row 2: rtl ── */}
+          <div>
+            <FadeRow leftColor="#2a0630" rightColor="#2a0630">
+              <DraggableMarquee
+                items={rowTwo}
+                speed={20}
+                direction="rtl"
+                maskStyle={null}
+                renderItem={(recruiter, index) => <MobileRecruiterCard key={index} recruiter={recruiter} />}
+              />
+            </FadeRow>
           </div>
         </div>
 

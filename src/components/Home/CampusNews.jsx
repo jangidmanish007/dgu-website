@@ -336,7 +336,7 @@ function AdmissionCard({ item }) {
       </h4>
 
       {/* excerpt */}
-      <p className="text-xs sm:text-sm text-[#333] leading-relaxed line-clamp-2 mb-2">{item.excerpt}</p>
+      <p className="text-xs sm:text-sm text-[#333] leading-relaxed line-clamp-2 mb-4 sm:mb-2">{item.excerpt}</p>
 
       <span className="inline-flex items-center gap-1 text-sm font-medium text-[#333] group-hover:gap-2 transition-all duration-200">
         Read More <ArrowRight className="w-4 h-4" />
@@ -409,8 +409,8 @@ export default function CampusNews() {
             viewport={{ once: true, amount: 0.15 }}
           >
             {/* heading */}
-            <div className="mb-5 sm:mb-10">
-              <h2 className="text-[24px] sm:text-[28px] font-bold text-gray-900 mb-3">Admission News</h2>
+            <div className="mb-10 sm:mb-10">
+              <h2 className="text-[24px] sm:text-[28px] font-bold text-gray-900 mb-2 sm:mb-3">Admission News</h2>
               <p className="text-sm text-[#333] mt-0.5">Important updates &amp; deadlines</p>
               <SectionAccent />
             </div>
