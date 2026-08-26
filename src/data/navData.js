@@ -507,58 +507,129 @@ export const mainNavItems = [
     items: [
       {
         label: 'Media',
-        href: '/library',
+        href: '#',
         children: [
-          { label: 'In the News', href: '/academics/research/centers' },
-          { label: 'Photo Gallery', href: '/academics/research/publications' },
-          { label: 'Video Gallery', href: '/academics/research/publications' },
+          { label: 'In the News', href: '/in-the-news' },
+          { label: 'Photo Gallery', href: '/photo-gallery' },
+          { label: 'Video Gallery', href: '/video-gallery' },
         ],
       },
       {
         label: 'Important Links',
-        href: '/e-resources',
+        href: '#',
         children: [
-          { label: 'Grievance Redressal Form', href: '/academics/research/centers' },
-          { label: 'Anti-Discrimination Form', href: '/academics/research/publications' },
-          { label: 'Gazette Notification for establishment of DBS Global University', href: '/academics/research/publications' },
+          {
+            label: 'Grievance Redressal Form',
+            href: 'https://dbsuniversity.edugrievance.com/',
+          },
+          {
+            label: 'Anti-Discrimination Form',
+            href: '/anti-ragging-committee',
+          },
+          {
+            label: 'Gazette Notification for establishment of DBS Global University',
+            href: '/uploads/documents/doc-7503_gazette-notification.pdf',
+          },
         ],
       },
       {
         label: 'Payments',
-        href: '/downloads',
+        href: '#',
         children: [
-          { label: 'Online - DGU Fee Portal', href: '/academics/research/centers' },
+          {
+            label: 'Online - DGU Fee Portal',
+            href: 'https://onlinesbi.sbi.bank.in/sbicollect/icollecthome.htm',
+          },
         ],
       },
       {
         label: 'Helpful Resources',
-        href: '/naac',
+        href: '#',
         children: [
-          { label: 'Admission Notices', href: '/academics/research/centers' },
-          { label: 'Campus & Event News', href: '/academics/research/centers' },
-          { label: 'Placement News', href: '/academics/research/centers' },
-          { label: 'Blogs', href: '/academics/research/centers' },
-          { label: 'Onspot Admissions', href: '/academics/research/centers' },
-          { label: 'UGC Proforma / Mandatory Disclosure', href: '/academics/research/centers' },
-          { label: 'UGC Letter', href: '/academics/research/centers' },
-          { label: 'Association of Indian Universities', href: '/academics/research/centers' },
-          { label: 'Equal Opportunity Cell', href: '/academics/research/centers' },
-          { label: 'Student Grievance Redressal Committee', href: '/academics/research/centers' },
-          { label: 'Constitution of Anti Narcotic', href: '/academics/research/centers' },
-          { label: 'Constitution of Internal Complaints', href: '/academics/research/centers' },
-          { label: 'Ombudsperson', href: '/academics/research/centers' },
-          { label: 'Public Self Disclosure', href: '/academics/research/centers' },
-          { label: 'Form No. 10AC for Section 80 G for Donation', href: '/academics/research/centers' },
-          { label: 'Model Statutes', href: '/academics/research/centers' },
-          { label: 'Institutional Development Plan', href: '/academics/research/centers' },
-          { label: 'PCI Approval', href: '/academics/research/centers' },
-          { label: 'Downloads', href: '/academics/research/centers' },
-          { label: 'Student Hand Book', href: '/academics/research/centers' },
+          {
+            label: 'Admission Notices',
+            href: '/news&filter=admission',
+          },
+          {
+            label: 'Campus & Event News',
+            href: '/news&filter=campus',
+          },
+          {
+            label: 'Placement News',
+            href: '/news&filter=placement',
+          },
+          {
+            label: 'Blogs',
+            href: 'https://dgu.ac.in/blog/',
+          },
+          {
+            label: 'Onspot Admissions',
+            href: '/dgu-onspot-admissions',
+          },
+          {
+            label: 'UGC Proforma / Mandatory Disclosure',
+            href: '/uploads/documents/doc-5928_ugc-proforma-or-mandatory-disclosure.pdf',
+          },
+          {
+            label: 'UGC Letter',
+            href: '/uploads/documents/doc-2822_ugc-letter.pdf',
+          },
+          {
+            label: 'Association of Indian Universities',
+            href: '/uploads/documents/doc-1581_association-of-indian-universities.pdf',
+          },
+          {
+            label: 'Equal Opportunity Cell',
+            href: '/uploads/documents/doc-2962_equal-opportunity-cell.pdf',
+          },
+          {
+            label: 'Student Grievance Redressal Committee',
+            href: '/student-grievance-redressal-committee',
+          },
+          {
+            label: 'Constitution of Anti Narcotic',
+            href: '/constitution-of-anti-narcotic',
+          },
+          {
+            label: 'Constitution of Internal Complaints',
+            href: '/constitution-of-internal-complaints',
+          },
+          {
+            label: 'Ombudsperson',
+            href: '/ombudsperson',
+          },
+          {
+            label: 'Public Self Disclosure',
+            href: '/public-self-disclosure',
+          },
+          {
+            label: 'Form No. 10AC for Section 80 G for Donation',
+            href: '/uploads/documents/doc-3209_form-no-10ac-for-section-80g-for-donation.pdf',
+          },
+          {
+            label: 'Model Statutes',
+            href: '/uploads/documents/doc-8286_model-statutes.pdf',
+          },
+          {
+            label: 'Institutional Development Plan',
+            href: '/institutional-development-plan',
+          },
+          {
+            label: 'PCI Approval',
+            href: '/uploads/documents/doc-2514_pci-approval-2026-27.pdf',
+          },
+          {
+            label: 'Downloads',
+            href: '/downloads',
+          },
+          {
+            label: 'Student Hand Book',
+            href: '/uploads/documents/doc-8682_student-hand-book-ay-2025-26.pdf',
+          },
         ],
       },
     ],
   },
-
   {
     id: 'apply-now',
     label: 'Apply Now',
